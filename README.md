@@ -11,4 +11,4 @@
 
 ## Home page
 
-1.
+1. retrieved images and icons for home page
