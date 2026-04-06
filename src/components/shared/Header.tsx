@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import LOGO from "../../assets/icons/header/Logo.svg";
 import STAR3 from "../../assets/icons/header/Nav icon.svg";
+import Button from "../ui/Button";
 const Header = () => {
   return (
     <header className="w-[1920px] h-[108px] border-b-1 border-b-redberry-border-gray">
@@ -19,9 +20,7 @@ const Header = () => {
             <button className="w-[114px] h-[60px] border-2 border-redberry-border-purple-light rounded-[8px] font-[500] text-[20px] text-redberry-text-purple">
               Log In
             </button>
-            <button className="w-[125px] h-[60px] bg-redberry-text-purple rounded-[8px] font-[500] text-[20px] text-white">
-              Sign Up
-            </button>
+            <Button text="Sign Up" classname="w-[125px] h-[60px]" />
           </div>
         </div>
       </div>

@@ -16,4 +16,4 @@
 3. tailwind.config.ts added for saving oftenly used colors
 4. build Header correctly for not authorized case
 5. added more colors in tailwind.config.ts and finished header part for unauthorized case
-6.
+6. build hero Section
