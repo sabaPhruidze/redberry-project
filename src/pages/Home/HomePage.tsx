@@ -6,7 +6,7 @@ import StartLearning from "./components/StartLearning";
 const HomePage = () => {
   return (
     <MainLayout>
-      <div className="w-[1920px] px-[177px]">
+      <div className="w-[1920px] px-[177px] ">
         <HeroSection />
         <StartLearning />
         <ContinueLearning />

@@ -22,4 +22,4 @@
 9. displayed fetched data in StartLearning so currently it displays correctly. Since index 2 data avgRating was null I made it zero and adjusted also starts with the next logic if avgRating is null than empty start (it will not be yellow) else if it is less than or is same as 4 than half star and if it is above 4 than full start (fully yellow).Hope this is what the goal was .
 10. building continue Learning section and blarred it. First fetch data using Tanstack query and axios and than will display it but since currently it is not authentificated I will display this case .
 11. added in progress courses endpoint hook types and simple continue learning section rendering than imported it on ContinueLearning component and it returns GET https://api.redclass.redberryinternship.ge/api/courses/in-progress 401 (Unauthorized). Also Imported necessary icons for footer as well and built part of it's design in advance .
-12. I build a mock continue learning with 3 cards .
+12. I build a mock continue learning with 3 cards .than blarred it and added log in suggestion component

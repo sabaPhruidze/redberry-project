@@ -1,6 +1,7 @@
 import type { MockInProgressCoursesResponse } from "../../../types/courses";
 import MOCK_COURSE_IN_PROGRESS from "../../../assets/images/home/mock_course_in_progress.png";
 import ContinueLearningCard from "./ContinueLearningCard";
+import ContinueLearningLocked from "./ContinueLearningLocked";
 const ContinueLearning = () => {
   const DATA: MockInProgressCoursesResponse = {
     data: [
@@ -47,16 +48,24 @@ const ContinueLearning = () => {
   };
   return (
     <section>
-      <div className="w-[1566px] h-[369px] mb-[120px]">
+      <div className="w-[1566px] h-[369px] mb-[120px] ">
         <h2 className="font-[600] text-[40px] h-[48px] leading-[100%] text-redberry-text-black">
           Continue Learning
         </h2>
-        <p className="text-redberry-text-gray-medium h-[22px] mt-[6px] font-[500] text-[18px] leading-[100%] mb-[32px]">
-          Pick up where you left
-        </p>
-        <div className="mt-[32px] flex flex-row flex-wrap gap-[24px] w-full h-[219px]">
+        <div className="flex flex-row justify-between h-[22px]">
+          <p className="text-redberry-text-gray-medium h-full mt-[6px] font-[500] text-[18px] leading-[100%] mb-[32px]">
+            Pick up where you left
+          </p>
+          <button className="font-[500] text-[20px] leading-[100%] text-[#4F46E5] underline">
+            See All
+          </button>
+        </div>
+        <div className="mt-[32px] flex flex-row flex-wrap gap-[24px] w-full h-[219px] relative z-1">
           {DATA.data.map((course) => (
-            <ContinueLearningCard key={course.id} course={course} />
+            <div>
+              <ContinueLearningCard key={course.id} course={course} />
+              <ContinueLearningLocked />
+            </div>
           ))}
         </div>
       </div>

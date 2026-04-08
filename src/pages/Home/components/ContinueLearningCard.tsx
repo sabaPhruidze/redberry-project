@@ -10,7 +10,7 @@ const ContinueLearningCard = ({ course }: Props) => {
   const progress = Math.max(course.progress, 0);
 
   return (
-    <div className="w-[506px] h-[219px] rounded-[12px] border-[0.5px] border-[#F5F5F5] p-[20px] bg-white">
+    <div className="w-[506px] h-[219px] rounded-[12px] border-[0.5px] border-[#F5F5F5] p-[20px] bg-white blur-[20px]">
       <div className="w-[466px] h-[123px] flex flex-row justify-between">
         <img
           src={course.course.image}
