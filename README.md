@@ -25,3 +25,52 @@
 12. I build a mock "continue learning" with 3 cards .than blarred it and added log in suggestion component
 13. footer is finished as well and by this Home Page visual part done .Moving forward I will start logic part from now on
 14.
+
+## Login Modal Step 1
+
+1. Created `src/features/auth/components/LoginModal.tsx`.
+2. Added full-screen dark overlay using `fixed inset-0` to dim the page.
+3. Added centered white modal shell (`max-w-[460px]`, `rounded-[12px]`, `p-[50px]`, `shadow-xl`).
+4. Kept inside area as simple placeholder block so real login form can be inserted later.
+
+## Login Modal Open Flow
+
+1. Added global modal state:
+   - `isLoginModalOpen`
+   - `openLoginModal`
+   - `closeLoginModal`
+2. Added reusable protected action helper:
+   - if user is not authenticated -> open login modal and stop action
+   - if user is authenticated -> continue original action
+3. Connected modal open/guard flow in existing unauthenticated triggers:
+   - Navbar `Log In`
+   - Continue Learning locked card `Log In`
+   - Continue Learning `See All`
+   - Continue Learning card `View`
+   - Footer `Enrolled Courses`
+   - Footer `My Profile`
+4. Login, register, API, validation, and submit logic are not implemented yet.
+
+## Auth Modal Header Block
+
+1. Created `src/features/auth/components/AuthModalHeader.tsx`.
+2. Added reusable centered header with props: `title` and `subtitle`.
+3. Added current content in modal:
+   - Title: `Create Account`
+   - Subtitle: `Join and start learning today`
+4. Used exact layout values from design:
+   - Header width: `360px`
+   - Title/subtitle gap: `6px`
+   - Typography sizes and weights based on Figma panel
+5. Only header text block is built. Inputs and form logic are not added yet.
+
+## Sign Up Step Indicator
+
+1. Created `src/features/auth/components/AuthStepIndicator.tsx`.
+2. Added 3 horizontal progress bars under the subtitle in the modal content area.
+3. Used exact visible values:
+   - Row: `360px` width, `8px` height, `8px` gap
+   - Each segment: `114.67px` width, `8px` height, `30px` radius
+   - Colors: active `#B7B3F4`, inactive `#EEEDFC`
+4. Added `24px` spacing below the progress row for the next section (Email block later).
+5. No input fields, validation, or API logic added in this step.

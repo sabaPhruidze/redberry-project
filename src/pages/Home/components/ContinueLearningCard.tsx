@@ -1,12 +1,14 @@
 import STAR from "../../../assets/icons/home/Star.svg";
 import OutlineButton from "../../../components/ui/OutlineButton";
 import type { MockInProgressCoursesResponse } from "../../../types/courses";
+import { useProtectedAction } from "../../../features/auth/hooks/useProtectedAction";
 
 interface Props {
   course: MockInProgressCoursesResponse["data"][number];
 }
 
 const ContinueLearningCard = ({ course }: Props) => {
+  const { handleProtectedAction } = useProtectedAction();
   const progress = Math.max(course.progress, 0);
 
   return (
@@ -49,6 +51,7 @@ const ContinueLearningCard = ({ course }: Props) => {
         <OutlineButton
           text="View"
           classname="w-[90px] h-[48px] leading-[24px] text-[16px]"
+          onClick={() => handleProtectedAction()}
         />
       </div>
     </div>

@@ -2,7 +2,11 @@ import type { MockInProgressCoursesResponse } from "../../../types/courses";
 import MOCK_COURSE_IN_PROGRESS from "../../../assets/images/home/mock_course_in_progress.png";
 import ContinueLearningCard from "./ContinueLearningCard";
 import ContinueLearningLocked from "./ContinueLearningLocked";
+import { useProtectedAction } from "../../../features/auth/hooks/useProtectedAction";
+
 const ContinueLearning = () => {
+  const { handleProtectedAction } = useProtectedAction();
+
   const DATA: MockInProgressCoursesResponse = {
     data: [
       {
@@ -56,7 +60,11 @@ const ContinueLearning = () => {
           <p className="text-redberry-text-gray-medium h-full mt-[6px] font-[500] text-[18px] leading-[100%] mb-[32px]">
             Pick up where you left
           </p>
-          <button className="font-[500] text-[20px] leading-[100%] text-[#4F46E5] underline">
+          <button
+            type="button"
+            onClick={() => handleProtectedAction()}
+            className="font-[500] text-[20px] leading-[100%] text-[#4F46E5] underline"
+          >
             See All
           </button>
         </div>

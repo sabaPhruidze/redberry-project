@@ -3,7 +3,11 @@ import LOGO from "../../assets/icons/header/Logo.svg";
 import STAR3 from "../../assets/icons/header/Nav icon.svg";
 import Button from "../ui/Button";
 import OutlineButton from "../ui/OutlineButton";
+import { useAuthModal } from "../../features/auth/hooks/useAuthModal";
+
 const Header = () => {
+  const { openLoginModal } = useAuthModal();
+
   return (
     <header className="w-[1920px] h-[108px] border-b-1 border-b-redberry-border-gray">
       <div className="w-full h-full px-[177px] flex flex-row justify-between items-center">
@@ -18,7 +22,11 @@ const Header = () => {
             </p>
           </div>
           <div className="flex flex-row gap-[15px]">
-            <OutlineButton text="Log In" classname="w-[114px] h-[60px]" />
+            <OutlineButton
+              text="Log In"
+              classname="w-[114px] h-[60px]"
+              onClick={openLoginModal}
+            />
             <Button text="Sign Up" classname="text-[20px] w-[125px] h-[60px]" />
           </div>
         </div>

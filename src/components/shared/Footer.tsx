@@ -8,7 +8,14 @@ import YOUTUBE from "../../assets/icons/footer/social_media/YouTube.svg";
 import EMAIL from "../../assets/icons/footer/contact/email.svg";
 import LOCATION from "../../assets/icons/footer/contact/location.svg";
 import PHONE from "../../assets/icons/footer/contact/phone.svg";
+import { useProtectedAction } from "../../features/auth/hooks/useProtectedAction";
+
+const isProtectedFooterLink = (link: string) =>
+  link === "Enrolled Courses" || link === "My Profile";
+
 const Footer = () => {
+  const { handleProtectedAction } = useProtectedAction();
+
   const social_media: {
     id: number;
     icon: string;
@@ -120,9 +127,19 @@ const Footer = () => {
                           className={item.icons[index].classname}
                         />
                       )}
-                      <p className="w-full block font-[400] text-[18px] leading-[100%] text-[#666666]">
-                        {link}
-                      </p>
+                      {isProtectedFooterLink(link) ? (
+                        <button
+                          type="button"
+                          onClick={() => handleProtectedAction()}
+                          className="w-full text-left font-[400] text-[18px] leading-[100%] text-[#666666]"
+                        >
+                          {link}
+                        </button>
+                      ) : (
+                        <p className="w-full block font-[400] text-[18px] leading-[100%] text-[#666666]">
+                          {link}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
