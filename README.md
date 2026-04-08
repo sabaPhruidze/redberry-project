@@ -24,77 +24,49 @@
 11. added in progress courses endpoint hook types and simple continue learning section rendering than imported it on ContinueLearning component and it returns GET https://api.redclass.redberryinternship.ge/api/courses/in-progress 401 (Unauthorized). Also Imported necessary icons for footer as well and built part of it's design in advance .
 12. I build a mock "continue learning" with 3 cards .than blarred it and added log in suggestion component
 13. footer is finished as well and by this Home Page visual part done .Moving forward I will start logic part from now on
-14.
-
-## Login Modal Step 1
-
-1. Created `src/features/auth/components/LoginModal.tsx`.
-2. Added full-screen dark overlay using `fixed inset-0` to dim the page.
-3. Added centered white modal shell (`max-w-[460px]`, `rounded-[12px]`, `p-[50px]`, `shadow-xl`).
-4. Kept inside area as simple placeholder block so real login form can be inserted later.
-
-## Login Modal Open Flow
-
-1. Added global modal state:
-   - `isLoginModalOpen`
-   - `openLoginModal`
-   - `closeLoginModal`
-2. Added reusable protected action helper:
-   - if user is not authenticated -> open login modal and stop action
-   - if user is authenticated -> continue original action
-3. Connected modal open/guard flow in existing unauthenticated triggers:
-   - Navbar `Log In`
-   - Continue Learning locked card `Log In`
-   - Continue Learning `See All`
-   - Continue Learning card `View`
-   - Footer `Enrolled Courses`
-   - Footer `My Profile`
-4. Login, register, API, validation, and submit logic are not implemented yet.
 
 ## Auth Modal Header Block
 
-1. Created `src/features/auth/components/AuthModalHeader.tsx`.
-2. Added reusable centered header with props: `title` and `subtitle`.
-3. Added current content in modal:
-   - Title: `Create Account`
-   - Subtitle: `Join and start learning today`
-4. Used exact layout values from design:
-   - Header width: `360px`
-   - Title/subtitle gap: `6px`
-   - Typography sizes and weights based on Figma panel
-5. Only header text block is built. Inputs and form logic are not added yet.
+1. Created src/features/auth/components/AuthModalHeader.tsx.
+2. Added a reusable header component with title and subtitle props.
+3. Inserted the current sign up header content.
 
 ## Sign Up Step Indicator
 
-1. Created `src/features/auth/components/AuthStepIndicator.tsx`.
-2. Added 3 horizontal progress bars under the subtitle in the modal content area.
-3. Used exact visible values:
-   - Row: `360px` width, `8px` height, `8px` gap
-   - Each segment: `114.67px` width, `8px` height, `30px` radius
-   - Colors: active `#B7B3F4`, inactive `#EEEDFC`
-4. Added `24px` spacing below the progress row for the next section (Email block later).
-5. No input fields, validation, or API logic added in this step.
+1. Created src/features/auth/components/AuthStepIndicator.tsx.
+2. Added a 3-step progress indicator for the sign up flow.
+3. Prepared spacing for the next section below it.
 
 ## Sign Up Step 1 UI Block
 
-1. Created `src/features/auth/components/AuthSignUpStepOneSection.tsx`.
-2. Added only the next visual section under the step indicator:
-   - Email label (`Email*`)
-   - Email input (`you@example.com`)
-   - `Next` button
-   - Footer with divider row (`or`) and text row (`Already have an account? Log In`)
-3. Used `360px` content width and exact spacing values:
-   - Label to input: `8px`
-   - Input to button: `16px`
-   - Button to footer: `16px`
-   - Footer internal gap: `8px`
-4. Kept `Log In` dark + underlined, and the rest gray, close to design.
-5. No validation, submit logic, API logic, or auth logic added in this step.
+1. Created src/features/auth/components/AuthSignUpStepOneSection.tsx.
+2. Added the email field, Next button, and footer actions.
+3. Kept this step focused on UI only.
 
 ## Auth Modal Scroll Lock
 
-1. Created reusable hook `src/hooks/use-lock-body-scroll.ts`.
-2. Hook API: `useLockBodyScroll(isLocked: boolean)`.
-3. Connected hook inside auth modal component (`LoginModal`).
-4. While modal is open, body scroll is locked with `document.body.style.overflow = "hidden"`.
-5. On close/unmount, previous body overflow value is restored safely.
+1. Created src/hooks/use-lock-body-scroll.ts.
+2. Added reusable body scroll lock logic for modal state.
+3. Connected it to LoginModal.
+
+## Sign Up Step Transition (1 -> 2)
+
+1. Added local currentStep: 1 | 2 | 3 state inside LoginModal.
+2. Connected Step 1 Next to open Step 2 in the same modal.
+3. Added back navigation from Step 2 to Step 1.
+4. Added Step 2 fields and updated step indicator state.
+
+## Sign Up Step 2 Exact Variant
+
+1. Kept the sign up flow inside a single modal.
+2. Switched only the inner content based on the current step.
+3. Preserved the same modal structure while moving between steps.
+
+## Sign Up Step 2 Behavior and Validation
+
+1. Added shared sign up state for email, password, and confirmPassword.
+2. Added validation for required fields, minimum length, and password match.
+3. Added inline error messages.
+4. Added separate password visibility toggle for both fields.
+5. Prevented moving to the next step until validation passes.
+6. Reset sign up state when the modal is closed.

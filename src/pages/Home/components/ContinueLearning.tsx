@@ -1,55 +1,11 @@
-import type { MockInProgressCoursesResponse } from "../../../types/courses";
-import MOCK_COURSE_IN_PROGRESS from "../../../assets/images/home/mock_course_in_progress.png";
 import ContinueLearningCard from "./ContinueLearningCard";
 import ContinueLearningLocked from "./ContinueLearningLocked";
 import { useProtectedAction } from "../../../features/auth/hooks/useProtectedAction";
+import { CONTINUE_LEARNING_DATA } from "./continueLearning.data";
 
 const ContinueLearning = () => {
   const { handleProtectedAction } = useProtectedAction();
 
-  const DATA: MockInProgressCoursesResponse = {
-    data: [
-      {
-        id: 0,
-        progress: 65,
-        course: {
-          id: 0,
-          title: "Advanced React & TypeScript Development ",
-          image: MOCK_COURSE_IN_PROGRESS,
-          avgRating: 4.9,
-          instructor: {
-            name: "Lecturer Marilyn Mango",
-          },
-        },
-      },
-      {
-        id: 1,
-        progress: 65,
-        course: {
-          id: 0,
-          title: "Advanced React & TypeScript Development ",
-          image: MOCK_COURSE_IN_PROGRESS,
-          avgRating: 4.9,
-          instructor: {
-            name: "Lecturer Marilyn Mango",
-          },
-        },
-      },
-      {
-        id: 2,
-        progress: 65,
-        course: {
-          id: 0,
-          title: "Advanced React & TypeScript Development ",
-          image: MOCK_COURSE_IN_PROGRESS,
-          avgRating: 4.9,
-          instructor: {
-            name: "Lecturer Marilyn Mango",
-          },
-        },
-      },
-    ],
-  };
   return (
     <section>
       <div className="w-[1566px] h-[369px] mb-[120px] ">
@@ -69,7 +25,7 @@ const ContinueLearning = () => {
           </button>
         </div>
         <div className="mt-[32px] flex flex-row flex-wrap gap-[24px] w-full h-[219px] relative z-1">
-          {DATA.data.map((course) => (
+          {CONTINUE_LEARNING_DATA.data.map((course) => (
             <div key={course.id}>
               <ContinueLearningCard course={course} />
               <ContinueLearningLocked />
