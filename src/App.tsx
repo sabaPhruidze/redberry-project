@@ -3,6 +3,8 @@ import { Suspense, lazy } from "react";
 import Loader from "./components/shared/Loader";
 import LoginModal from "./features/auth/components/LoginModal";
 import RegisterModal from "./features/auth/components/RegisterModal";
+import EnrolledCoursesModal from "./features/auth/components/EnrolledCoursesModal";
+import ProfileModal from "./features/auth/components/ProfileModal";
 import { AuthModalProvider } from "./features/auth/context/AuthModalContext";
 import { useAuthModal } from "./features/auth/hooks/useAuthModal";
 
@@ -12,8 +14,12 @@ const AppContent = () => {
   const {
     isLoginModalOpen,
     isRegisterModalOpen,
+    isEnrolledCoursesModalOpen,
+    isProfileModalOpen,
     closeLoginModal,
     closeRegisterModal,
+    closeEnrolledCoursesModal,
+    closeProfileModal,
   } = useAuthModal();
 
   return (
@@ -22,6 +28,7 @@ const AppContent = () => {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/courses/catalog" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
@@ -29,6 +36,10 @@ const AppContent = () => {
 
       {isLoginModalOpen && <LoginModal onClose={closeLoginModal} />}
       {isRegisterModalOpen && <RegisterModal onClose={closeRegisterModal} />}
+      {isEnrolledCoursesModalOpen && (
+        <EnrolledCoursesModal onClose={closeEnrolledCoursesModal} />
+      )}
+      {isProfileModalOpen && <ProfileModal onClose={closeProfileModal} />}
     </>
   );
 };
