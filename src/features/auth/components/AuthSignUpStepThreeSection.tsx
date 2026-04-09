@@ -4,6 +4,7 @@ import AuthUploadAvatarField from "./AuthUploadAvatarField";
 
 type AuthSignUpStepThreeSectionProps = {
   username: string;
+  usernameError?: string;
   onUsernameChange: (value: string) => void;
   onAvatarFileChange: (file: File | null) => void;
   onSignUp: () => void;
@@ -14,6 +15,7 @@ type AuthSignUpStepThreeSectionProps = {
 
 const AuthSignUpStepThreeSection = ({
   username,
+  usernameError,
   onUsernameChange,
   onAvatarFileChange,
   onSignUp,
@@ -28,7 +30,9 @@ const AuthSignUpStepThreeSection = ({
         label="Username*"
         value={username}
         placeholder="Username"
+        autoComplete="username"
         labelColor="#3D3D3D"
+        error={usernameError}
         onChange={onUsernameChange}
       />
       <AuthUploadAvatarField showTopSpacing onFileSelect={onAvatarFileChange} />

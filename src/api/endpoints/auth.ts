@@ -1,5 +1,7 @@
 import { api } from "../http";
 import type {
+  LoginPayload,
+  LoginResponseData,
   RegisterPayload,
   RegisterResponseData,
 } from "../../features/auth/types/signup";
@@ -12,8 +14,8 @@ const createRegisterFormData = (payload: RegisterPayload) => {
   formData.append("password", payload.password);
   formData.append("password_confirmation", payload.confirmPassword);
 
-  if (payload.avatarFile) {
-    formData.append("avatar", payload.avatarFile);
+  if (payload.avatar) {
+    formData.append("avatar", payload.avatar);
   }
 
   return formData;
@@ -25,5 +27,10 @@ export const register = async (payload: RegisterPayload) => {
     createRegisterFormData(payload),
   );
 
+  return response.data.data;
+};
+
+export const login = async (payload: LoginPayload) => {
+  const response = await api.post<{ data: LoginResponseData }>("/login", payload);
   return response.data.data;
 };

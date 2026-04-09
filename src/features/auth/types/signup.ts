@@ -1,14 +1,17 @@
 export type SignUpStep = 1 | 2 | 3;
 
-export type SignUpFormValues = {
+export type RegisterPayload = {
+  username: string;
   email: string;
   password: string;
   confirmPassword: string;
-  username: string;
-  avatarFile: File | null;
+  avatar: File | null;
 };
 
-export type RegisterPayload = SignUpFormValues;
+export type LoginPayload = {
+  email: string;
+  password: string;
+};
 
 export type RegisteredUser = {
   id: number;
@@ -21,15 +24,10 @@ export type RegisteredUser = {
   profileComplete: boolean;
 };
 
-export type RegisterResponseData = {
+export type AuthResponseData = {
   user: RegisteredUser;
   token: string;
 };
 
-export const INITIAL_SIGN_UP_FORM: SignUpFormValues = {
-  email: "",
-  password: "",
-  confirmPassword: "",
-  username: "",
-  avatarFile: null,
-};
+export type RegisterResponseData = AuthResponseData;
+export type LoginResponseData = AuthResponseData;

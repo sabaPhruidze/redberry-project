@@ -85,4 +85,11 @@
 4. Built upload avatar area with existing upload icon asset, centered content, inline upload action, and helper text.
 5. Connected sign up to backend `POST /register` using shared axios and TanStack Query mutation.
 6. Sign up now sends multipart form data (with optional avatar), stores `access_token` and `auth_user` in localStorage, and closes modal on success.
-7. Split auth modals: Log In now opens `LoginModal` only, and Sign Up now opens `RegisterModal` with the existing 3-step registration flow.
+
+## Log In
+
+1. Split auth modals: Log In now opens `LoginModal` only, and Sign Up now opens `RegisterModal` with the existing 3-step registration flow.
+2. Connected LoginModal to backend login API with TanStack Query mutation, pending button state, and simple inline error message.
+3. Login form now uses React Hook Form + Zod schema validation from a separate auth schemas folder.
+4. RegisterModal now uses React Hook Form + Zod schema for core validation and real register submit flow.
+5. Unified auth input error visuals (label, border, placeholder, helper text in red) for Login and Register, and split modal internals into child components to keep modal files smaller.

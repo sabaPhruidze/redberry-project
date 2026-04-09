@@ -6,6 +6,7 @@ type AuthPasswordInputFieldProps = {
   value: string;
   type?: "password" | "text";
   placeholder: string;
+  autoComplete?: string;
   icon?: ComponentType<SVGProps<SVGSVGElement>>;
   ariaLabel?: string;
   labelColor?: string;
@@ -21,6 +22,7 @@ const AuthPasswordInputField = ({
   value,
   type = "text",
   placeholder,
+  autoComplete,
   icon: Icon,
   ariaLabel,
   labelColor = "#000000",
@@ -31,6 +33,9 @@ const AuthPasswordInputField = ({
 }: AuthPasswordInputFieldProps) => {
   const hasError = Boolean(error);
   const iconColorClass = hasError ? "text-[#F4161A]" : "text-[#ADADAD]";
+  const placeholderClass = hasError
+    ? "placeholder:text-[#F4161A]"
+    : "placeholder:text-[#8A8A8A]";
 
   return (
     <div className={`${showTopSpacing ? "mt-[24px]" : ""} flex w-[360px] flex-col`}>
@@ -50,8 +55,9 @@ const AuthPasswordInputField = ({
           type={type}
           value={value}
           onChange={(event) => onChange(event.target.value)}
+          autoComplete={autoComplete}
           placeholder={placeholder}
-          className="h-full w-full border-0 bg-transparent p-0 text-[14px] leading-[100%] text-[#141414] outline-none placeholder:text-[#8A8A8A]"
+          className={`h-full w-full border-0 bg-transparent p-0 text-[14px] leading-[100%] text-[#141414] outline-none ${placeholderClass}`}
           style={{ fontWeight: 500 }}
         />
         {Icon && onToggleVisibility && ariaLabel ? (
