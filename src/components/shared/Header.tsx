@@ -6,7 +6,7 @@ import OutlineButton from "../ui/OutlineButton";
 import { useAuthModal } from "../../features/auth/hooks/useAuthModal";
 
 const Header = () => {
-  const { openLoginModal } = useAuthModal();
+  const { openLoginModal, openRegisterModal } = useAuthModal();
 
   return (
     <header className="w-[1920px] h-[108px] border-b-1 border-b-redberry-border-gray">
@@ -27,7 +27,11 @@ const Header = () => {
               classname="w-[114px] h-[60px]"
               onClick={openLoginModal}
             />
-            <Button text="Sign Up" classname="text-[20px] w-[125px] h-[60px]" />
+            <Button
+              text="Sign Up"
+              classname="text-[20px] w-[125px] h-[60px]"
+              onClick={openRegisterModal}
+            />
           </div>
         </div>
       </div>

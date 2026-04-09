@@ -85,3 +85,4 @@
 4. Built upload avatar area with existing upload icon asset, centered content, inline upload action, and helper text.
 5. Connected sign up to backend `POST /register` using shared axios and TanStack Query mutation.
 6. Sign up now sends multipart form data (with optional avatar), stores `access_token` and `auth_user` in localStorage, and closes modal on success.
+7. Split auth modals: Log In now opens `LoginModal` only, and Sign Up now opens `RegisterModal` with the existing 3-step registration flow.
