@@ -21,6 +21,7 @@ const AuthUploadAvatarField = ({
   return (
     <div className={`${showTopSpacing ? "mt-[24px]" : ""} w-[360px]`}>
       <label
+        htmlFor="signup-avatar-upload"
         className="h-[17px] w-[360px] text-[14px] leading-[100%] text-[#3D3D3D]"
         style={{ fontWeight: 500 }}
       >
@@ -43,6 +44,7 @@ const AuthUploadAvatarField = ({
         </div>
       </div>
       <input
+        id="signup-avatar-upload"
         ref={inputRef}
         type="file"
         accept=".jpg,.jpeg,.png,.webp"
