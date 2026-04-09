@@ -36,6 +36,8 @@
 1. Created src/features/auth/components/AuthStepIndicator.tsx.
 2. Added a 3-step progress indicator for the sign up flow.
 3. Prepared spacing for the next section below it.
+4. adjusted sign up modal top content spacing
+5. fixed create account header and step indicator sizes
 
 ## Sign Up Step 1 UI Block
 

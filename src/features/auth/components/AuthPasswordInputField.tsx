@@ -31,8 +31,8 @@ const AuthPasswordInputField = ({
     <>
       <label
         htmlFor={id}
-        className={`${showTopSpacing ? "mt-[16px]" : ""} block h-[17px] w-[360px] text-[14px] leading-[100%]`}
-        style={{ fontWeight: 500, color: "#3D3D3D" }}
+        className={`${showTopSpacing ? "mt-[24px]" : ""} block h-[17px] w-[360px] text-[14px] leading-[100%]`}
+        style={{ fontWeight: 500, color: "#000000" }}
       >
         {label}
       </label>

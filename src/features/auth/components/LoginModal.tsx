@@ -31,8 +31,8 @@ const LoginModal = ({ onClose }: LoginModalProps) => {
         <section
           role="dialog"
           aria-modal="true"
-          className="relative w-[460px] rounded-[12px] bg-white p-[50px]"
-          style={{ minHeight: isStepTwo ? "513px" : undefined }}
+          className="relative flex w-[460px] flex-col gap-[12px] rounded-[12px] bg-white p-[50px]"
+          style={{ height: isStepTwo ? "513px" : undefined }}
         >
           {isStepTwo && <AuthModalBackButton onClick={goBackToStepOne} />}
           <button

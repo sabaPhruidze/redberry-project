@@ -21,7 +21,7 @@ const AuthModalFooter = ({
         </span>
       </div>
 
-      <div className="flex w-[360px] items-center justify-center gap-[8px] px-[60px]">
+      <div className="flex h-[17px] w-[360px] items-center justify-center gap-[8px] px-[60px]">
         <p
           className="text-[14px] leading-[100%] text-[#666666]"
           style={{ fontFamily: "Inter, sans-serif", fontWeight: 400 }}
