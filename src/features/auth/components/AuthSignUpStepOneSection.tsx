@@ -4,12 +4,14 @@ type AuthSignUpStepOneSectionProps = {
   email: string;
   onEmailChange: (value: string) => void;
   onNext: () => void;
+  onLogInClick: () => void;
 };
 
 const AuthSignUpStepOneSection = ({
   email,
   onEmailChange,
   onNext,
+  onLogInClick,
 }: AuthSignUpStepOneSectionProps) => {
   return (
     <div className="w-[360px]" style={{ fontFamily: "Inter, sans-serif" }}>
@@ -42,7 +44,11 @@ const AuthSignUpStepOneSection = ({
         Next
       </button>
 
-      <AuthModalFooter />
+      <AuthModalFooter
+        questionText="Already have an account?"
+        actionText="Log In"
+        onActionClick={onLogInClick}
+      />
     </div>
   );
 };

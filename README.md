@@ -70,3 +70,8 @@
 4. Added separate password visibility toggle for both fields.
 5. Prevented moving to the next step until validation passes.
 6. Reset sign up state when the modal is closed.
+
+## Sign Up Modal Footer Update
+
+- adjusted sign up modal footer layout to match figma
+- aligned divider row and login action row

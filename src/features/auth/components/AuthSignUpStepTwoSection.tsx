@@ -11,6 +11,7 @@ type AuthSignUpStepTwoSectionProps = {
   onPasswordChange: (value: string) => void;
   onConfirmPasswordChange: (value: string) => void;
   onNext: () => void;
+  onLogInClick: () => void;
 };
 const AuthSignUpStepTwoSection = ({
   password,
@@ -18,6 +19,7 @@ const AuthSignUpStepTwoSection = ({
   onPasswordChange,
   onConfirmPasswordChange,
   onNext,
+  onLogInClick,
 }: AuthSignUpStepTwoSectionProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -72,7 +74,11 @@ const AuthSignUpStepTwoSection = ({
       >
         Next
       </button>
-      <AuthModalFooter />
+      <AuthModalFooter
+        questionText="Already have an account?"
+        actionText="Log In"
+        onActionClick={onLogInClick}
+      />
     </div>
   );
 };

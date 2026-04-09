@@ -55,6 +55,7 @@ const LoginModal = ({ onClose }: LoginModalProps) => {
                 email={signUpForm.email}
                 onEmailChange={(value) => updateField("email", value)}
                 onNext={goToStepTwo}
+                onLogInClick={closeModal}
               />
             )}
             {isStepTwo && (
@@ -66,6 +67,7 @@ const LoginModal = ({ onClose }: LoginModalProps) => {
                   updateField("confirmPassword", value)
                 }
                 onNext={goToStepThree}
+                onLogInClick={closeModal}
               />
             )}
           </div>
