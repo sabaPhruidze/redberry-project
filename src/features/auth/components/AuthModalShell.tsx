@@ -7,6 +7,10 @@ type AuthModalShellProps = {
   closeAriaLabel: string;
   closeOnOverlayClick?: boolean;
   leadingControl?: ReactNode;
+  panelClassName?: string;
+  contentClassName?: string;
+  closeButtonClassName?: string;
+  enableCloseActions?: boolean;
 };
 
 const AuthModalShell = ({
@@ -15,34 +19,35 @@ const AuthModalShell = ({
   closeAriaLabel,
   closeOnOverlayClick = false,
   leadingControl,
+  panelClassName = "",
+  contentClassName = "gap-[24px]",
+  closeButtonClassName = "top-[20.5px] right-[15px]",
+  enableCloseActions = true,
 }: AuthModalShellProps) => {
+  const canCloseFromOverlay = enableCloseActions && closeOnOverlayClick;
+
   return (
     <div
       className="fixed inset-0 z-50 bg-[#00000040]"
-      onClick={closeOnOverlayClick ? onClose : undefined}
+      onClick={canCloseFromOverlay ? onClose : undefined}
     >
       <div className="flex min-h-screen items-center justify-center">
         <section
           role="dialog"
           aria-modal="true"
-          onClick={
-            closeOnOverlayClick
-              ? (event) => event.stopPropagation()
-              : undefined
-          }
-          className="relative flex w-[460px] flex-col gap-[12px] rounded-[12px] bg-white p-[50px]"
+          onClick={canCloseFromOverlay ? (event) => event.stopPropagation() : undefined}
+          className={`relative flex w-[460px] flex-col gap-[12px] rounded-[12px] bg-white p-[50px] ${panelClassName}`}
         >
           {leadingControl}
           <button
             type="button"
-            onClick={onClose}
+            onClick={enableCloseActions ? onClose : undefined}
             aria-label={closeAriaLabel}
-            className="absolute flex h-6 w-6 items-center justify-center"
-            style={{ top: "20.5px", right: "15px" }}
+            className={`absolute flex h-6 w-6 items-center justify-center ${closeButtonClassName}`}
           >
             <img src={CLOSE_ICON} alt="" className="h-6 w-6" />
           </button>
-          <div className="flex w-[360px] flex-col gap-[24px]">{children}</div>
+          <div className={`flex w-[360px] flex-col ${contentClassName}`}>{children}</div>
         </section>
       </div>
     </div>

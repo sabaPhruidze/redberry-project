@@ -95,3 +95,11 @@
 5. Unified auth input error visuals (label, border, placeholder, helper text in red) for Login and Register, and split modal internals into child components to keep modal files smaller.
 6. After Login the visual part of header's right side changes. Also when profile icon is clicked displays modal but currently nothing written inside.
 7. Currently no enrolled course wilbe so nothing will be displayed after login . I will get back to this part later after finishing all major parts
+
+## Profile
+
+1. Built the first visual shell of the Profile modal.
+2. Added the dimmed overlay and the main modal container.
+3. Matched the modal size, radius, padding, and gap to the Figma values.
+4. Added the Profile title, close icon placement, and inner content wrapper.
+5. Kept the component visual-only for now without form logic or validation.
