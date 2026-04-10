@@ -11,6 +11,7 @@ const ProfileSingleField = ({
   type = "text",
   placeholder,
   value,
+  autoComplete,
   onChange,
   onBlur,
   inputRef,
@@ -38,6 +39,7 @@ const ProfileSingleField = ({
       type={type}
       name={name}
       value={safeValue}
+      autoComplete={autoComplete}
       placeholder={placeholder}
       onChange={onChange}
       onBlur={onBlur}

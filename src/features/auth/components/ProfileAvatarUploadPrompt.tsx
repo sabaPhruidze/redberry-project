@@ -29,7 +29,7 @@ const ProfileAvatarUploadPrompt = ({
       id="profile-upload-avatar-box"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
-      className="mb-[4px] flex w-[360px] flex-col items-center gap-[8px] rounded-[8px] border-[1.5px] border-[#D1D1D1] bg-[#FFFFFF] pt-[30px] pb-[30px]"
+      className="mb-[4px] flex h-[142px] w-[360px] flex-col items-center justify-center gap-[8px] rounded-[8px] border-[1.5px] border-[#D1D1D1] bg-[#FFFFFF]"
     >
       <img
         src={DOWNLOAD_ICON}

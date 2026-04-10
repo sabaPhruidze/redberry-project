@@ -10,6 +10,7 @@ type ProfileControlledFieldProps = {
   label: string;
   type?: "text" | "number" | "email";
   placeholder: string;
+  autoComplete?: string;
   readOnly?: boolean;
   disabled?: boolean;
   error?: string;
@@ -31,6 +32,7 @@ const ProfileControlledField = ({
   label,
   type = "text",
   placeholder,
+  autoComplete,
   readOnly,
   disabled,
   error,
@@ -56,6 +58,7 @@ const ProfileControlledField = ({
           type={type}
           placeholder={placeholder}
           value={String(field.value ?? "")}
+          autoComplete={autoComplete}
           onChange={field.onChange}
           onBlur={field.onBlur}
           inputRef={field.ref}

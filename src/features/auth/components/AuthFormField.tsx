@@ -40,6 +40,7 @@ const AuthFormField = ({
   trailingIconContainerClassName = "flex h-[22px] w-[22px] items-center justify-center",
 }: AuthFormFieldProps) => {
   const hasError = Boolean(error);
+  const resolvedAutoComplete = autoComplete ?? "off";
   const errorId = hasError ? `${id}-error` : undefined;
   const placeholderClass = hasError ? "placeholder:text-[#F4161A]" : placeholderClassName;
   const fieldStyle = { borderColor: hasError ? "#F4161A" : fieldBorderColor, backgroundColor: fieldBackgroundColor };
@@ -53,7 +54,7 @@ const AuthFormField = ({
           value={value}
           onChange={(event) => onChange?.(event.target.value)}
           onBlur={onBlur}
-          autoComplete={autoComplete}
+          autoComplete={resolvedAutoComplete}
           readOnly={readOnly}
           disabled={disabled}
           name={name}

@@ -12,6 +12,7 @@ export type ProfileSingleFieldProps = {
   type?: "text" | "number" | "email";
   placeholder: string;
   value: string;
+  autoComplete?: string;
   onChange: (value: string) => void;
   onBlur: () => void;
   inputRef: RefCallback<HTMLInputElement>;
@@ -32,7 +33,19 @@ export type ProfileSingleFieldProps = {
 export const getProfileIconClassName = (hasError: boolean) =>
   hasError
     ? "h-[22px] w-[22px] [&_path]:!fill-[#F4161A] [&_path]:!stroke-[#F4161A]"
-    : "h-[22px] w-[22px]";
+    : "h-[22px] w-[22px] [&_path]:!fill-[#B9B9B9] [&_path]:!stroke-[#B9B9B9]";
+
+const getArrowIconClassName = (success?: boolean, hasError?: boolean) => {
+  if (hasError) {
+    return "h-[22px] w-[22px] [&_path]:!fill-[#F4161A] [&_path]:!stroke-[#F4161A]";
+  }
+
+  if (success) {
+    return "h-[22px] w-[22px] [&_path]:!fill-[#6ACF76] [&_path]:!stroke-[#6ACF76]";
+  }
+
+  return "h-[22px] w-[22px] [&_path]:!fill-[#B9B9B9] [&_path]:!stroke-[#B9B9B9]";
+};
 
 const getCheckIconClassName = (success?: boolean, hasError?: boolean) => {
   if (hasError) {
@@ -65,7 +78,7 @@ export const getTrailingIconNode = (
     return createElement(ARROW_ICON, {
       "aria-hidden": true,
       focusable: "false",
-      className,
+      className: getArrowIconClassName(success, hasError),
     });
   }
 
