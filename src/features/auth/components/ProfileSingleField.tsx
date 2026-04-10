@@ -19,7 +19,7 @@ const ProfileSingleField = ({
   error,
   success = false,
   trailingIconType,
-  wrapperClassName = "h-[73px]",
+  wrapperClassName = "min-h-[73px]",
   labelClassName = "w-full",
   inputBoxClassName = "",
   labelInputGapClassName = "mt-[5px]",

@@ -3,6 +3,7 @@ import HALF_STAR from "../../../assets/icons/home/Star (1).svg";
 import EMPTY_STAR from "../../../assets/icons/home/Star (2).svg";
 import Button from "../../../components/ui/Button";
 import type { Course } from "../../../types/courses";
+import { useNavigate } from "react-router-dom";
 
 type StartLearningCardProps = {
   course: Course;
@@ -19,6 +20,8 @@ const getRatingIcon = (avgRating: number | null) => {
 };
 
 const StartLearningCard = ({ course }: StartLearningCardProps) => {
+  const navigate = useNavigate();
+
   return (
     <div className="w-[506px] h-[576px] p-[20px] rounded-[12px] bg-white">
       <img src={course.image} alt="course image" className="w-full h-[262px]" />
@@ -46,7 +49,11 @@ const StartLearningCard = ({ course }: StartLearningCardProps) => {
             ${Number(course.basePrice)}
           </p>
         </div>
-        <Button text="Details" classname="text-[#F5F5F5] text-[20px]" />
+        <Button
+          text="Details"
+          classname="text-[#F5F5F5] text-[20px]"
+          onClick={() => navigate(`/courses/${course.id}`)}
+        />
       </div>
     </div>
   );

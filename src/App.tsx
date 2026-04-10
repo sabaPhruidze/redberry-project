@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Loader from "./components/shared/Loader";
 import LoginModal from "./features/auth/components/LoginModal";
@@ -9,6 +9,11 @@ import { AuthModalProvider } from "./features/auth/context/AuthModalContext";
 import { useAuthModal } from "./features/auth/hooks/useAuthModal";
 
 const HomePage = lazy(() => import("./pages/Home/HomePage"));
+const CoursesCatalogPage = lazy(
+  () => import("./pages/Courses/CoursesCatalogPage"),
+);
+const CourseDetailPage = lazy(() => import("./pages/Courses/CourseDetailPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const AppContent = () => {
   const {
@@ -28,8 +33,9 @@ const AppContent = () => {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/courses/catalog" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/courses/catalog" element={<CoursesCatalogPage />} />
+            <Route path="/courses/:id" element={<CourseDetailPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

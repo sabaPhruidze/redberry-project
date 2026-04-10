@@ -17,7 +17,12 @@ const getIsAuthenticated = () => {
 };
 
 const Header = () => {
-  const { openLoginModal, openRegisterModal, openProfileModal } = useAuthModal();
+  const {
+    openLoginModal,
+    openRegisterModal,
+    openProfileModal,
+    openEnrolledCoursesModal,
+  } = useAuthModal();
   const isAuthenticated = getIsAuthenticated();
   const authUser = getAuthUser();
   const isProfileComplete = getIsProfileCompleteFromUser(authUser);
@@ -32,6 +37,7 @@ const Header = () => {
           <HeaderAuthenticatedActions
             isProfileComplete={isProfileComplete}
             onProfileClick={openProfileModal}
+            onEnrolledCoursesClick={openEnrolledCoursesModal}
           />
         ) : (
           <HeaderGuestActions

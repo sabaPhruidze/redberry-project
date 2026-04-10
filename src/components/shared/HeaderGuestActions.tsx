@@ -1,6 +1,7 @@
 import STAR3 from "../../assets/icons/header/three_star.svg";
 import Button from "../ui/Button";
 import OutlineButton from "../ui/OutlineButton";
+import { Link } from "react-router-dom";
 
 type HeaderGuestActionsProps = {
   onLoginClick: () => void;
@@ -13,12 +14,15 @@ const HeaderGuestActions = ({
 }: HeaderGuestActionsProps) => {
   return (
     <div className="flex w-[510px] h-[56px] items-center gap-[51px]">
-      <div className="flex flex-row items-center w-[220px] px-[15px] border-1 border-black">
+      <Link
+        to="/courses/catalog"
+        className="flex w-[220px] flex-row items-center border-1 border-black px-[15px]"
+      >
         <img src={STAR3} alt="3 stars" className="w-[26px] h-[26px]" />
         <p className="w-[156px] font-[500] text-[20px] text-redberry-text-gray-light">
           Browse Courses
         </p>
-      </div>
+      </Link>
       <div className="flex flex-row gap-[15px]">
         <OutlineButton
           text="Log In"

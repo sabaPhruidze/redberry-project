@@ -1,13 +1,6 @@
 import type { RegisteredUser } from "../../auth/types/signup";
 import { isProfileComplete } from "../../auth/helpers/profile";
 
-type ProfilePatch = {
-  fullName: string;
-  mobileNumber: string;
-  age: number;
-  avatar?: string;
-};
-
 export const getAuthUser = (): RegisteredUser | null => {
   if (typeof window === "undefined") return null;
   const rawUser = localStorage.getItem("auth_user");
@@ -41,16 +34,4 @@ export const syncAuthUser = (user: RegisteredUser) => {
 
   localStorage.setItem("auth_user", JSON.stringify(syncedUser));
   return syncedUser;
-};
-
-export const syncAuthUserProfile = (profilePatch: ProfilePatch) => {
-  const currentUser = getAuthUser();
-  if (!currentUser) return null;
-
-  const nextUser: RegisteredUser = {
-    ...currentUser,
-    ...profilePatch,
-  };
-
-  return syncAuthUser(nextUser);
 };

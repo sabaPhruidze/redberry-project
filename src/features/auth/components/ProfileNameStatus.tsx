@@ -1,8 +1,21 @@
+import {
+  getProfileStatusText,
+  getProfileStatusTextClassName,
+  type ProfileStatus,
+} from "../helpers/profileStatus";
+
 type ProfileNameStatusProps = {
   username: string;
+  status: ProfileStatus;
 };
 
-const ProfileNameStatus = ({ username }: ProfileNameStatusProps) => {
+const ProfileNameStatus = ({
+  username,
+  status,
+}: ProfileNameStatusProps) => {
+  const statusText = getProfileStatusText(status);
+  const statusClassName = getProfileStatusTextClassName(status);
+
   return (
     <div className="flex h-[40.3px] w-[292px] flex-col justify-center gap-[4px]">
       <p
@@ -12,10 +25,10 @@ const ProfileNameStatus = ({ username }: ProfileNameStatusProps) => {
         {username}
       </p>
       <p
-        className="h-[12px] w-[89px] text-[10px] font-normal leading-[100%] tracking-[0px] text-[#1DC31D]"
+        className={`text-[10px] font-normal leading-[100%] tracking-[0px] ${statusClassName}`}
         style={{ fontFamily: "Inter, sans-serif" }}
       >
-        Profile is Complete
+        {statusText}
       </p>
     </div>
   );

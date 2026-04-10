@@ -7,11 +7,13 @@ import ProfileCompletionIndicator from "../../features/profile/components/Profil
 type HeaderAuthenticatedActionsProps = {
   isProfileComplete: boolean;
   onProfileClick: () => void;
+  onEnrolledCoursesClick: () => void;
 };
 
 const HeaderAuthenticatedActions = ({
   isProfileComplete,
   onProfileClick,
+  onEnrolledCoursesClick,
 }: HeaderAuthenticatedActionsProps) => {
   return (
     <div className="flex w-[547px] h-[56px] items-center gap-[36px]" style={{ fontFamily: "Inter, sans-serif" }}>
@@ -24,7 +26,11 @@ const HeaderAuthenticatedActions = ({
             </p>
           </span>
         </Link>
-        <button type="button" className="flex h-[56px] w-[227px] items-center gap-[8px] rounded-[8px] p-[15px]">
+        <button
+          type="button"
+          onClick={onEnrolledCoursesClick}
+          className="flex h-[56px] w-[227px] items-center gap-[8px] rounded-[8px] p-[15px]"
+        >
           <span className="flex h-[26px] w-[197px] items-center gap-[8px]">
             <img src={OPENED_BOOK} alt="opened book" className="h-[26px] w-[26px]" />
             <span className="h-[24px] w-[163px] text-left font-[500] text-[20px] leading-[100%] text-redberry-text-gray-light">

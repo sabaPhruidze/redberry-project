@@ -5,13 +5,8 @@ import { profileSchema, type ProfileFormValues } from "../schemas/profile.schema
 import { isProfileComplete } from "../helpers/profile";
 import {
   getStoredProfileState,
-  INCOMPLETE_PROFILE_CLOSE_TEXT,
   type ProfileFormInputValues,
 } from "../helpers/profileModalForm";
-
-type UseProfileModalFormParams = {
-  onClose?: () => void;
-};
 
 const getCompletionAgeValue = (value: unknown) => {
   if (typeof value === "number" || typeof value === "string") {
@@ -21,13 +16,13 @@ const getCompletionAgeValue = (value: unknown) => {
   return "";
 };
 
-export const useProfileModalForm = ({ onClose }: UseProfileModalFormParams) => {
+export const useProfileModalForm = () => {
   const storedProfile = useMemo(() => getStoredProfileState(), []);
   const {
     control,
     handleSubmit,
     setValue,
-    formState: { errors, isValid, isDirty },
+    formState: { errors, isValid },
   } = useForm<ProfileFormInputValues, unknown, ProfileFormValues>({
     resolver: zodResolver(profileSchema),
     mode: "onBlur",
@@ -35,24 +30,23 @@ export const useProfileModalForm = ({ onClose }: UseProfileModalFormParams) => {
   });
 
   const watchedValues = useWatch({ control });
-
-  const handleAttemptClose = () => {
-    const profileIsComplete = isProfileComplete({
-      fullName: watchedValues.fullName ?? "",
-      email: watchedValues.email ?? "",
-      mobileNumber: watchedValues.mobileNumber ?? "",
-      age: getCompletionAgeValue(watchedValues.age),
-    });
-
-    const shouldConfirmClose =
-      !storedProfile.profileComplete || !profileIsComplete || isDirty;
-
-    if (shouldConfirmClose && !window.confirm(INCOMPLETE_PROFILE_CLOSE_TEXT)) {
-      return;
-    }
-
-    onClose?.();
-  };
+  const profileIsComplete = useMemo(
+    () =>
+      isProfileComplete({
+        fullName: watchedValues.fullName ?? "",
+        email: watchedValues.email ?? "",
+        mobileNumber: watchedValues.mobileNumber ?? "",
+        age: getCompletionAgeValue(watchedValues.age),
+      }),
+    [
+      watchedValues.fullName,
+      watchedValues.email,
+      watchedValues.mobileNumber,
+      watchedValues.age,
+    ],
+  );
+  const shouldConfirmClose = !profileIsComplete;
+  const canCloseOnOverlay = profileIsComplete;
 
   const handleAvatarChange = (avatar: File | null) => {
     setValue("avatar", avatar, {
@@ -67,9 +61,11 @@ export const useProfileModalForm = ({ onClose }: UseProfileModalFormParams) => {
     handleSubmit,
     errors,
     isValid,
-    isDirty,
+    username: storedProfile.username,
     watchedValues,
-    handleAttemptClose,
+    profileIsComplete,
+    shouldConfirmClose,
+    canCloseOnOverlay,
     handleAvatarChange,
   };
 };

@@ -24,6 +24,11 @@
 11. added in progress courses endpoint hook types and simple continue learning section rendering than imported it on ContinueLearning component and it returns GET https://api.redclass.redberryinternship.ge/api/courses/in-progress 401 (Unauthorized). Also Imported necessary icons for footer as well and built part of it's design in advance .
 12. I build a mock "continue learning" with 3 cards .than blarred it and added log in suggestion component
 13. footer is finished as well and by this Home Page visual part done .Moving forward I will start logic part from now on
+14. Added real routes for `/courses/catalog` and `/courses/:id`, plus a dedicated Not Found page instead of redirecting every unknown route to `/`.
+15. Wired course details flow from cards so users can actually reach course detail pages.
+16. Continue Learning now keeps showing for authenticated users with empty enrollments and displays the required empty state text with a Browse Courses action.
+17. `See All` in Continue Learning and `Enrolled Courses` in the authenticated header now open the enrolled courses modal flow (guest users are redirected to login through protected action logic).
+18. Enrolled courses modal now has an empty state, enrolled list, summary, total price, and a non-browser confirmation UI for complete enrollment action.
 
 ## Auth Modal Header Block
 

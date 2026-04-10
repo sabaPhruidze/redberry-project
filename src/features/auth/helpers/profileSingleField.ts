@@ -34,9 +34,21 @@ export const getProfileIconClassName = (hasError: boolean) =>
     ? "h-[22px] w-[22px] [&_path]:!fill-[#F4161A] [&_path]:!stroke-[#F4161A]"
     : "h-[22px] w-[22px]";
 
+const getCheckIconClassName = (success?: boolean, hasError?: boolean) => {
+  if (hasError) {
+    return "h-[22px] w-[22px] [&_path]:!fill-[#F4161A] [&_path]:!stroke-[#F4161A]";
+  }
+
+  if (success) {
+    return "h-[22px] w-[22px] [&_path]:!fill-[#6ACF76] [&_path]:!stroke-[#6ACF76]";
+  }
+
+  return "h-[22px] w-[22px] [&_path]:!fill-[#B9B9B9] [&_path]:!stroke-[#B9B9B9]";
+};
+
 export const getTrailingIconNode = (
   trailingIconType?: TrailingIconType,
-  _success?: boolean,
+  success?: boolean,
   hasError?: boolean,
 ): ReactNode => {
   const className = getProfileIconClassName(Boolean(hasError));
@@ -61,7 +73,7 @@ export const getTrailingIconNode = (
     return createElement(CHECK_ICON, {
       "aria-hidden": true,
       focusable: "false",
-      className,
+      className: getCheckIconClassName(success, hasError),
     });
   }
 

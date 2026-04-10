@@ -73,7 +73,7 @@ const AuthFormField = ({
         ) : null}
       </div>
       {hasError ? (
-        <p id={errorId} className="mt-[5px] h-[15px] w-full text-[12px] leading-[100%] text-[#F4161A]" style={{ fontWeight: 400 }}>
+        <p id={errorId} className="mt-[5px] w-full text-[12px] leading-[140%] text-[#F4161A]" style={{ fontWeight: 400 }}>
           {error}
         </p>
       ) : null}

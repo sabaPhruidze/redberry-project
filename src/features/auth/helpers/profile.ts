@@ -5,20 +5,52 @@ type ProfileCompletionInput = {
   age?: number | string | null;
 };
 
-const hasTextValue = (value?: string | null) => Boolean(value?.trim());
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const FULL_NAME_CHARS_REGEX = /^[\p{L} ]+$/u;
 
 export const normalizeGeorgianMobile = (value: string) =>
   value.replace(/\s+/g, "");
 
-export const isProfileComplete = (profile: ProfileCompletionInput) => {
-  const hasFullName = hasTextValue(profile.fullName);
-  const hasEmail = hasTextValue(profile.email);
-  const hasMobileNumber =
-    normalizeGeorgianMobile(profile.mobileNumber ?? "").length > 0;
-  const hasAge =
-    typeof profile.age === "number"
-      ? Number.isFinite(profile.age)
-      : hasTextValue(profile.age);
+export const isValidEmail = (value?: string | null) =>
+  Boolean(value?.trim()) && EMAIL_REGEX.test(value?.trim() ?? "");
 
-  return hasFullName && hasEmail && hasMobileNumber && hasAge;
+export const isValidFullNameCharacters = (value: string) =>
+  FULL_NAME_CHARS_REGEX.test(value);
+
+export const isValidFullName = (value?: string | null) => {
+  const safeValue = value?.trim() ?? "";
+  return (
+    safeValue.length >= 3 &&
+    safeValue.length <= 50 &&
+    isValidFullNameCharacters(safeValue)
+  );
+};
+
+export const isValidGeorgianMobile = (value?: string | null) => {
+  const normalizedMobile = normalizeGeorgianMobile(value ?? "");
+  return /^\d{9}$/.test(normalizedMobile) && normalizedMobile.startsWith("5");
+};
+
+export const isValidAge = (value?: number | string | null) => {
+  const numericValue =
+    typeof value === "number"
+      ? value
+      : typeof value === "string"
+        ? Number(value.trim())
+        : Number.NaN;
+
+  return (
+    Number.isInteger(numericValue) &&
+    numericValue >= 16 &&
+    numericValue <= 120
+  );
+};
+
+export const isProfileComplete = (profile: ProfileCompletionInput) => {
+  return (
+    isValidFullName(profile.fullName) &&
+    isValidEmail(profile.email) &&
+    isValidGeorgianMobile(profile.mobileNumber) &&
+    isValidAge(profile.age)
+  );
 };

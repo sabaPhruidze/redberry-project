@@ -1,18 +1,36 @@
 import STAR from "../../../assets/icons/home/Star.svg";
 import OutlineButton from "../../../components/ui/OutlineButton";
-import type { MockInProgressCoursesResponse } from "../../../types/courses";
 import { useProtectedAction } from "../../../features/auth/hooks/useProtectedAction";
+import { useNavigate } from "react-router-dom";
 
-interface Props {
-  course: MockInProgressCoursesResponse["data"][number];
-}
+export type ContinueLearningCourse = {
+  id: number;
+  progress: number;
+  course: {
+    id: number;
+    title: string;
+    image: string;
+    avgRating: number;
+    instructor: {
+      name: string;
+    };
+  };
+};
 
-const ContinueLearningCard = ({ course }: Props) => {
+type Props = {
+  course: ContinueLearningCourse;
+  isBlurred?: boolean;
+};
+
+const ContinueLearningCard = ({ course, isBlurred = false }: Props) => {
   const { handleProtectedAction } = useProtectedAction();
+  const navigate = useNavigate();
   const progress = Math.max(course.progress, 0);
 
   return (
-    <div className="w-[506px] h-[219px] rounded-[12px] border-[0.5px] border-[#F5F5F5] p-[20px] bg-white blur-[20px]">
+    <div
+      className={`w-[506px] rounded-[12px] border-[0.5px] border-[#F5F5F5] bg-white p-[20px] ${isBlurred ? "blur-[20px]" : ""}`}
+    >
       <div className="w-[466px] h-[123px] flex flex-row justify-between">
         <img
           src={course.course.image}
@@ -51,7 +69,9 @@ const ContinueLearningCard = ({ course }: Props) => {
         <OutlineButton
           text="View"
           classname="w-[90px] h-[48px] leading-[24px] text-[16px]"
-          onClick={() => handleProtectedAction()}
+          onClick={() =>
+            handleProtectedAction(() => navigate(`/courses/${course.course.id}`))
+          }
         />
       </div>
     </div>

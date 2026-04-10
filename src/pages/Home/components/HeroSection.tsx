@@ -4,7 +4,11 @@ import RECTANGLE_GRAY from "../../../assets/icons/home/Rectangle_gray.svg";
 import REACTANGLE_WHITE from "../../../assets/icons/home/Rectangle_white.svg";
 import ARROW_LEFT from "../../../assets/icons/home/Arrowleft (1).svg";
 import ARROW_RIGHT from "../../../assets/icons/home/Carousel_nav (1).svg";
+import { useNavigate } from "react-router-dom";
+
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="py-[64px]">
       <div
@@ -23,6 +27,7 @@ const HeroSection = () => {
           <Button
             text="Browse Courses"
             classname="text-[20px] w-[206px] h-[64px]"
+            onClick={() => navigate("/courses/catalog")}
           />
           <div className="flex fle-row justify-center  mt-[31px]">
             <div className="w-[1206px] h-[54px] flex items-center gap-[12px] justify-center">

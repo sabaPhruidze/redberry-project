@@ -11,6 +11,7 @@ type AuthModalShellProps = {
   contentClassName?: string;
   closeButtonClassName?: string;
   enableCloseActions?: boolean;
+  overlayClassName?: string;
 };
 
 const AuthModalShell = ({
@@ -23,6 +24,7 @@ const AuthModalShell = ({
   contentClassName = "gap-[24px]",
   closeButtonClassName = "top-[20.5px] right-[15px]",
   enableCloseActions = true,
+  overlayClassName = "",
 }: AuthModalShellProps) => {
   const canCloseFromOverlay = enableCloseActions && closeOnOverlayClick;
 
@@ -43,7 +45,7 @@ const AuthModalShell = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-[#00000040]"
+      className={`fixed inset-0 z-50 bg-[#00000040] ${overlayClassName}`}
       onClick={canCloseFromOverlay ? onClose : undefined}
     >
       <div className="flex min-h-screen items-center justify-center">
