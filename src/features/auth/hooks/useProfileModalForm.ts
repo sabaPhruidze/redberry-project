@@ -25,6 +25,7 @@ export const useProfileModalForm = ({ onClose }: UseProfileModalFormParams) => {
   const storedProfile = useMemo(() => getStoredProfileState(), []);
   const {
     control,
+    handleSubmit,
     setValue,
     formState: { errors, isValid, isDirty },
   } = useForm<ProfileFormInputValues, unknown, ProfileFormValues>({
@@ -63,6 +64,7 @@ export const useProfileModalForm = ({ onClose }: UseProfileModalFormParams) => {
 
   return {
     control,
+    handleSubmit,
     errors,
     isValid,
     isDirty,

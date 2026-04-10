@@ -40,6 +40,7 @@ const AuthFormField = ({
   trailingIconContainerClassName = "flex h-[22px] w-[22px] items-center justify-center",
 }: AuthFormFieldProps) => {
   const hasError = Boolean(error);
+  const errorId = hasError ? `${id}-error` : undefined;
   const placeholderClass = hasError ? "placeholder:text-[#F4161A]" : placeholderClassName;
   const fieldStyle = { borderColor: hasError ? "#F4161A" : fieldBorderColor, backgroundColor: fieldBackgroundColor };
   return (
@@ -58,6 +59,8 @@ const AuthFormField = ({
           name={name}
           ref={inputRef}
           placeholder={placeholder}
+          aria-invalid={hasError}
+          aria-describedby={errorId}
           className={`h-full w-full border-0 bg-transparent p-0 text-[14px] leading-[100%] text-[#141414] outline-none ${placeholderClass}`}
           style={{ fontWeight: 500 }}
         />
@@ -70,7 +73,7 @@ const AuthFormField = ({
         ) : null}
       </div>
       {hasError ? (
-        <p className="mt-[5px] h-[15px] w-full text-[12px] leading-[100%] text-[#F4161A]" style={{ fontWeight: 400 }}>
+        <p id={errorId} className="mt-[5px] h-[15px] w-full text-[12px] leading-[100%] text-[#F4161A]" style={{ fontWeight: 400 }}>
           {error}
         </p>
       ) : null}

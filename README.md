@@ -114,3 +114,10 @@
 - profile modal now uses react-hook-form.
 - profile fields now have real blur validation.
 - email is visible but not editable.
+- profile completeness now syncs after profile save.
+- enroll now is blocked for incomplete profiles.
+- incomplete profiles now open the profile modal before enrollment.
+- profile feedback states were polished.
+- profile indicator now reflects completion state.
+- modal close behavior now respects incomplete profile rules.
+- no new assets were added.

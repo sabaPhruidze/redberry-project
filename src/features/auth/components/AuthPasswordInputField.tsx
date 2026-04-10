@@ -41,9 +41,15 @@ const AuthPasswordInputField = ({
   onToggleVisibility,
 }: AuthPasswordInputFieldProps) => {
   const hasError = Boolean(error);
-  const iconColorClass = hasError ? "text-[#F4161A]" : "text-[#ADADAD]";
+  const iconClassName = hasError
+    ? "h-[22px] w-[22px] [&_path]:!fill-[#F4161A] [&_path]:!stroke-[#F4161A]"
+    : "h-[22px] w-[22px] text-[#ADADAD]";
   const trailingIcon = Icon ? (
-    <Icon aria-hidden="true" focusable="false" className={`h-[22px] w-[22px] ${iconColorClass}`} />
+    <Icon
+      aria-hidden="true"
+      focusable="false"
+      className={iconClassName}
+    />
   ) : undefined;
 
   return (

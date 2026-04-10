@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import CLOSE_ICON from "../../../assets/icons/authentification/ic_round-close.svg";
 
 type AuthModalShellProps = {
@@ -25,6 +25,21 @@ const AuthModalShell = ({
   enableCloseActions = true,
 }: AuthModalShellProps) => {
   const canCloseFromOverlay = enableCloseActions && closeOnOverlayClick;
+
+  useEffect(() => {
+    if (!enableCloseActions || !onClose) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [enableCloseActions, onClose]);
 
   return (
     <div

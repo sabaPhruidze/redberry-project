@@ -1,9 +1,10 @@
 import { Controller, type Control } from "react-hook-form";
 import type { ProfileFormInputValues } from "../helpers/profileModalForm";
+import type { ProfileFormValues } from "../schemas/profile.schema";
 import ProfileSingleField from "./ProfileSingleField";
 
 type ProfileControlledFieldProps = {
-  control: Control<ProfileFormInputValues>;
+  control: Control<ProfileFormInputValues, unknown, ProfileFormValues>;
   name: keyof ProfileFormInputValues;
   id: string;
   label: string;

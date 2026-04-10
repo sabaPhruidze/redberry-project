@@ -4,7 +4,7 @@ import { useProtectedAction } from "../../../features/auth/hooks/useProtectedAct
 import { CONTINUE_LEARNING_DATA } from "./continueLearning.data";
 
 const ContinueLearning = () => {
-  const { handleProtectedAction } = useProtectedAction();
+  const { handleProtectedEnrollAction } = useProtectedAction();
 
   return (
     <section>
@@ -18,7 +18,7 @@ const ContinueLearning = () => {
           </p>
           <button
             type="button"
-            onClick={() => handleProtectedAction()}
+            onClick={() => handleProtectedEnrollAction()}
             className="font-[500] text-[20px] leading-[100%] text-[#4F46E5] underline"
           >
             See All

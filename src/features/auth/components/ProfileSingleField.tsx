@@ -1,6 +1,6 @@
 import AuthFormField from "./AuthFormField";
 import {
-  getTrailingIconSrc,
+  getTrailingIconNode,
   type ProfileSingleFieldProps,
 } from "../helpers/profileSingleField";
 
@@ -27,10 +27,8 @@ const ProfileSingleField = ({
   fieldBackgroundColor = "#FFFFFF",
   fieldBorderColor = "#D1D1D1",
 }: ProfileSingleFieldProps) => {
-  const trailingIconSrc = getTrailingIconSrc(trailingIconType, success);
-  const trailingIcon = trailingIconSrc ? (
-    <img src={trailingIconSrc} alt="" aria-hidden="true" className="h-[22px] w-[22px]" />
-  ) : undefined;
+  const hasError = Boolean(error);
+  const trailingIcon = getTrailingIconNode(trailingIconType, success, hasError);
   const safeValue = value ?? "";
 
   return (

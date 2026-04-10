@@ -1,5 +1,6 @@
 import { useAuthModal } from "./useAuthModal";
 import { runProtectedAction } from "../helpers/protectedAction";
+import { useRequireCompleteProfile } from "../../profile/hooks/useRequireCompleteProfile";
 
 const getIsAuthenticated = () => {
   if (typeof window === "undefined") {
@@ -11,6 +12,7 @@ const getIsAuthenticated = () => {
 
 export const useProtectedAction = () => {
   const { openLoginModal } = useAuthModal();
+  const { runWithCompleteProfile } = useRequireCompleteProfile();
 
   const handleProtectedAction = (action?: () => void) => {
     runProtectedAction({
@@ -20,5 +22,8 @@ export const useProtectedAction = () => {
     });
   };
 
-  return { handleProtectedAction };
+  const handleProtectedEnrollAction = (action?: () => void) =>
+    runWithCompleteProfile(action);
+
+  return { handleProtectedAction, handleProtectedEnrollAction };
 };
