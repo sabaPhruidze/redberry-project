@@ -1,26 +1,20 @@
-import AuthPasswordInputField from "./AuthPasswordInputField";
 import ProfileFieldRow from "./ProfileFieldRow";
+import ProfileSingleField from "./ProfileSingleField";
 
 const ProfileFieldsLayout = () => {
   return (
     <div className="flex w-[360px] flex-col gap-[12px]">
-      <AuthPasswordInputField
+      <ProfileSingleField
         id="profile-full-name"
         label="Full Name"
-        value=""
         placeholder="Username"
-        labelColor="#3D3D3D"
-        labelInputGapClassName="mt-[5px]"
-        onChange={() => undefined}
+        trailingIconType="pencil"
       />
-      <AuthPasswordInputField
+      <ProfileSingleField
         id="profile-email"
         label="Email"
-        value=""
         placeholder="Email@gmail.com"
-        labelColor="#3D3D3D"
-        labelInputGapClassName="mt-[5px]"
-        onChange={() => undefined}
+        trailingIconType="check"
       />
       <ProfileFieldRow />
     </div>

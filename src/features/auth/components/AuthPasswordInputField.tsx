@@ -1,4 +1,5 @@
 import type { ComponentType, SVGProps } from "react";
+import AuthFormField from "./AuthFormField";
 
 type AuthPasswordInputFieldProps = {
   id: string;
@@ -13,6 +14,8 @@ type AuthPasswordInputFieldProps = {
   showTopSpacing?: boolean;
   labelInputGapClassName?: string;
   containerClassName?: string;
+  readOnly?: boolean;
+  disabled?: boolean;
   error?: string;
   onChange: (value: string) => void;
   onToggleVisibility?: () => void;
@@ -31,56 +34,38 @@ const AuthPasswordInputField = ({
   showTopSpacing = false,
   labelInputGapClassName = "mt-[8px]",
   containerClassName = "",
+  readOnly = false,
+  disabled = false,
   error,
   onChange,
   onToggleVisibility,
 }: AuthPasswordInputFieldProps) => {
   const hasError = Boolean(error);
   const iconColorClass = hasError ? "text-[#F4161A]" : "text-[#ADADAD]";
-  const placeholderClass = hasError
-    ? "placeholder:text-[#F4161A]"
-    : "placeholder:text-[#8A8A8A]";
+  const trailingIcon = Icon ? (
+    <Icon aria-hidden="true" focusable="false" className={`h-[22px] w-[22px] ${iconColorClass}`} />
+  ) : undefined;
 
   return (
-    <div
-      className={`${showTopSpacing ? "mt-[24px]" : ""} flex w-full flex-col ${containerClassName}`}
-    >
-      <label
-        htmlFor={id}
-        className="h-[17px] w-full text-[14px] leading-[100%]"
-        style={{ fontWeight: 500, color: hasError ? "#F4161A" : labelColor }}
-      >
-        {label}
-      </label>
-      <div
-        className={`${labelInputGapClassName} flex h-[48px] w-full items-center gap-[10px] rounded-[8px] border-[1.5px] bg-white px-[13px] py-[12px] pr-[15px]`}
-        style={{ borderColor: hasError ? "#F4161A" : "#D1D1D1" }}
-      >
-        <input
-          id={id}
-          type={type}
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
-          autoComplete={autoComplete}
-          placeholder={placeholder}
-          className={`h-full w-full border-0 bg-transparent p-0 text-[14px] leading-[100%] text-[#141414] outline-none ${placeholderClass}`}
-          style={{ fontWeight: 500 }}
-        />
-        {Icon && onToggleVisibility && ariaLabel ? (
-          <button type="button" aria-label={ariaLabel} onClick={onToggleVisibility}>
-            <Icon aria-hidden="true" focusable="false" className={`h-[22px] w-[22px] ${iconColorClass}`} />
-          </button>
-        ) : null}
-      </div>
-      {hasError && (
-        <p
-          className="mt-[5px] h-[15px] w-full text-[12px] leading-[100%] text-[#F4161A]"
-          style={{ fontWeight: 400 }}
-        >
-          {error}
-        </p>
-      )}
-    </div>
+    <AuthFormField
+      id={id}
+      label={label}
+      type={type}
+      value={value}
+      placeholder={placeholder}
+      autoComplete={autoComplete}
+      error={error}
+      labelColor={labelColor}
+      showTopSpacing={showTopSpacing}
+      labelInputGapClassName={labelInputGapClassName}
+      containerClassName={containerClassName}
+      readOnly={readOnly}
+      disabled={disabled}
+      onChange={onChange}
+      trailingIcon={trailingIcon}
+      trailingIconAriaLabel={ariaLabel}
+      onTrailingIconClick={onToggleVisibility}
+    />
   );
 };
 

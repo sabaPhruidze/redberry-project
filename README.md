@@ -98,8 +98,8 @@
 
 ## Profile
 
-1. Added the profile identity block with authenticated user data.
-2. Connected the profile avatar and username to the logged-in user state.
-3. Matched the username and status text styles to the Figma values.
-4. Added the visual layout for Full Name, Email, Mobile Number, and Age fields.
-5. Kept this step layout-focused without validation, upload, or submit logic.
+1. Corrected the field wrapper layout using the exact Figma values.
+2. Set the shared single-field wrapper to 360px fill, 73px hug, vertical flow, and 5px gap.
+3. Set the mobile and age row to a horizontal 360px fill wrapper with an 8px gap.
+4. Applied the correct 22px trailing icon sizes for the name and email fields.
+5. Reused shared field UI only where the visual structure truly matched.
