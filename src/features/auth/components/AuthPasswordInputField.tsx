@@ -11,6 +11,8 @@ type AuthPasswordInputFieldProps = {
   ariaLabel?: string;
   labelColor?: string;
   showTopSpacing?: boolean;
+  labelInputGapClassName?: string;
+  containerClassName?: string;
   error?: string;
   onChange: (value: string) => void;
   onToggleVisibility?: () => void;
@@ -27,6 +29,8 @@ const AuthPasswordInputField = ({
   ariaLabel,
   labelColor = "#000000",
   showTopSpacing = false,
+  labelInputGapClassName = "mt-[8px]",
+  containerClassName = "",
   error,
   onChange,
   onToggleVisibility,
@@ -38,16 +42,18 @@ const AuthPasswordInputField = ({
     : "placeholder:text-[#8A8A8A]";
 
   return (
-    <div className={`${showTopSpacing ? "mt-[24px]" : ""} flex w-[360px] flex-col`}>
+    <div
+      className={`${showTopSpacing ? "mt-[24px]" : ""} flex w-full flex-col ${containerClassName}`}
+    >
       <label
         htmlFor={id}
-        className="h-[17px] w-[360px] text-[14px] leading-[100%]"
+        className="h-[17px] w-full text-[14px] leading-[100%]"
         style={{ fontWeight: 500, color: hasError ? "#F4161A" : labelColor }}
       >
         {label}
       </label>
       <div
-        className="mt-[8px] flex h-[48px] w-[360px] items-center gap-[10px] rounded-[8px] border-[1.5px] bg-white px-[13px] py-[12px] pr-[15px]"
+        className={`${labelInputGapClassName} flex h-[48px] w-full items-center gap-[10px] rounded-[8px] border-[1.5px] bg-white px-[13px] py-[12px] pr-[15px]`}
         style={{ borderColor: hasError ? "#F4161A" : "#D1D1D1" }}
       >
         <input
@@ -66,7 +72,14 @@ const AuthPasswordInputField = ({
           </button>
         ) : null}
       </div>
-      {hasError && <p className="mt-[5px] h-[15px] w-[360px] text-[12px] leading-[100%] text-[#F4161A]" style={{ fontWeight: 400 }}>{error}</p>}
+      {hasError && (
+        <p
+          className="mt-[5px] h-[15px] w-full text-[12px] leading-[100%] text-[#F4161A]"
+          style={{ fontWeight: 400 }}
+        >
+          {error}
+        </p>
+      )}
     </div>
   );
 };

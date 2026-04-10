@@ -98,5 +98,8 @@
 
 ## Profile
 
-1. Built the Profile modal visual shell with overlay, container, header, title, and close icon.
-2. Matched the key Figma layout values and kept this step UI-only (no form logic or validation).
+1. Added the profile identity block with authenticated user data.
+2. Connected the profile avatar and username to the logged-in user state.
+3. Matched the username and status text styles to the Figma values.
+4. Added the visual layout for Full Name, Email, Mobile Number, and Age fields.
+5. Kept this step layout-focused without validation, upload, or submit logic.
