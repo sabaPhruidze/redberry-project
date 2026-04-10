@@ -36,6 +36,8 @@ const Header = () => {
         {isAuthenticated ? (
           <HeaderAuthenticatedActions
             isProfileComplete={isProfileComplete}
+            username={authUser?.username ?? "Profile"}
+            avatarUrl={authUser?.avatar}
             onProfileClick={openProfileModal}
             onEnrolledCoursesClick={openEnrolledCoursesModal}
           />

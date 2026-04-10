@@ -1,20 +1,28 @@
 import { Link } from "react-router-dom";
 import STAR3 from "../../assets/icons/header/three_star.svg";
 import OPENED_BOOK from "../../assets/icons/header/opened_book.svg";
-import AVATAR_ICON from "../../assets/icons/header/Avatar.svg";
-import ProfileCompletionIndicator from "../../features/profile/components/ProfileCompletionIndicator";
+import UserAvatar from "../../features/auth/components/UserAvatar";
+import type { ProfileStatus } from "../../features/auth/helpers/profileStatus";
 
 type HeaderAuthenticatedActionsProps = {
   isProfileComplete: boolean;
+  username: string;
+  avatarUrl?: string;
   onProfileClick: () => void;
   onEnrolledCoursesClick: () => void;
 };
 
 const HeaderAuthenticatedActions = ({
   isProfileComplete,
+  username,
+  avatarUrl,
   onProfileClick,
   onEnrolledCoursesClick,
 }: HeaderAuthenticatedActionsProps) => {
+  const profileStatus: ProfileStatus = isProfileComplete
+    ? "complete"
+    : "incomplete";
+
   return (
     <div className="flex w-[547px] h-[56px] items-center gap-[36px]" style={{ fontFamily: "Inter, sans-serif" }}>
       <div className="flex w-[447px] h-[56px] items-center gap-[8px]">
@@ -39,9 +47,12 @@ const HeaderAuthenticatedActions = ({
           </span>
         </button>
       </div>
-      <button type="button" onClick={onProfileClick} className="relative h-[56px] w-[56px] rounded-full bg-[#EEEDFC]">
-        <img src={AVATAR_ICON} alt="avatar icon" className="h-[56px] w-[56px]" />
-        <ProfileCompletionIndicator isComplete={isProfileComplete} />
+      <button type="button" onClick={onProfileClick} className="h-[56px] w-[56px]">
+        <UserAvatar
+          avatarUrl={avatarUrl}
+          username={username}
+          status={profileStatus}
+        />
       </button>
     </div>
   );
