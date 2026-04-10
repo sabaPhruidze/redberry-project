@@ -98,8 +98,5 @@
 
 ## Profile
 
-1. Built the first visual shell of the Profile modal.
-2. Added the dimmed overlay and the main modal container.
-3. Matched the modal size, radius, padding, and gap to the Figma values.
-4. Added the Profile title, close icon placement, and inner content wrapper.
-5. Kept the component visual-only for now without form logic or validation.
+1. Built the Profile modal visual shell with overlay, container, header, title, and close icon.
+2. Matched the key Figma layout values and kept this step UI-only (no form logic or validation).
