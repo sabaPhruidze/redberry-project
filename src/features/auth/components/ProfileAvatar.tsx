@@ -1,4 +1,4 @@
-import { useRef, type ChangeEvent } from "react";
+import { useRef, type ChangeEvent, type DragEvent } from "react";
 import AuthFieldLabel from "./AuthFieldLabel";
 import DOWNLOAD_ICON from "../../../assets/icons/authentification/donwload_icon.svg";
 
@@ -7,6 +7,13 @@ type ProfileAvatarProps = {
   disabled?: boolean;
 };
 
+const ALLOWED_AVATAR_MIME_TYPES = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+]);
+const ALLOWED_AVATAR_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"];
+
 const ProfileAvatar = ({
   onAvatarChange,
   disabled = false,
@@ -14,8 +21,44 @@ const ProfileAvatar = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const openFilePicker = () => fileInputRef.current?.click();
 
+  const isAllowedAvatarFile = (file: File) => {
+    const mimeType = file.type.toLowerCase();
+    if (ALLOWED_AVATAR_MIME_TYPES.has(mimeType)) return true;
+
+    const lowerCaseName = file.name.toLowerCase();
+    return ALLOWED_AVATAR_EXTENSIONS.some((extension) =>
+      lowerCaseName.endsWith(extension),
+    );
+  };
+
+  const selectAvatarFile = (files: FileList | null | undefined) => {
+    if (!files?.length) {
+      onAvatarChange(null);
+      return;
+    }
+
+    const firstFile = files[0];
+    if (!isAllowedAvatarFile(firstFile)) return;
+
+    onAvatarChange(firstFile);
+  };
+
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onAvatarChange(event.target.files?.[0] ?? null);
+    selectAvatarFile(event.target.files);
+  };
+
+  const handleDragOver = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+
+    if (disabled) return;
+    event.dataTransfer.dropEffect = "copy";
+  };
+
+  const handleDrop = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+
+    if (disabled) return;
+    selectAvatarFile(event.dataTransfer.files);
   };
 
   return (
@@ -28,13 +71,15 @@ const ProfileAvatar = ({
       <input
         ref={fileInputRef}
         type="file"
-        accept=".jpg,.jpeg,.png,.webp,image/*"
+        accept=".jpg,.jpeg,.png,.webp"
         onChange={handleFileChange}
         className="hidden"
         disabled={disabled}
       />
       <div
         id="profile-upload-avatar-box"
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
         className="mb-[4px] flex w-[360px] flex-col items-center gap-[8px] rounded-[8px] border-[1.5px] border-[#D1D1D1] bg-[#FFFFFF] pt-[30px] pb-[30px]"
       >
         <img
