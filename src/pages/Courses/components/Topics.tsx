@@ -1,4 +1,16 @@
+// Renders static topic chips and prepares topics query wiring.
+// Current integration logs fetched topics state without changing UI.
+import useTopics from "../../../api/hooks/useTopics";
+
 const Topics = () => {
+  const topicsQuery = useTopics();
+
+  console.log("Topics filter query:", {
+    data: topicsQuery.data,
+    isLoading: topicsQuery.isLoading,
+    error: topicsQuery.error,
+  });
+
   const TOPICS = [
     {
       id: 1,

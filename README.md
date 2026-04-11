@@ -133,3 +133,8 @@
 1. removed StartLearning component and added breadcrumb
 2. Created Filter component and starting building it. I finished building visual part and now it's card time to be built. It's finished and moving forward on a pagination
 3.
+4. Added typed catalog filter models for categories, topics, and instructors in the shared course types file.
+5. Added `/categories`, `/topics`, and `/instructors` API endpoint functions for the catalog filter data.
+6. Added types , TanStack Query hooks for categories, topics, and instructors to prepare the filter sidebar data flow.
+7. Connected the new hooks inside the related catalog filter components and logged their states for the first integration step only.
+8. currently just logs but I will use from now on

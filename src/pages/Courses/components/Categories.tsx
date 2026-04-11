@@ -1,10 +1,21 @@
+// Renders static category chips and prepares category query integration.
+// Data is fetched now only for logging in the first catalog step.
 import DEVELOPMENT from "../../../assets/icons/courses/Icon Set=Development.svg";
 import DESIGN from "../../../assets/icons/courses/Icon Set=Design.svg";
 import BUSINESS from "../../../assets/icons/courses/Icon Set=Business.svg";
 import DATA_SCIENCE from "../../../assets/icons/courses/Icon Set=Data Science.svg";
 import MARKETING from "../../../assets/icons/courses/Icon Set=Marketing.svg";
+import useCategories from "../../../api/hooks/useCategories";
 
 const Categories = () => {
+  const categoriesQuery = useCategories();
+
+  console.log("Categories filter query:", {
+    data: categoriesQuery.data,
+    isLoading: categoriesQuery.isLoading,
+    error: categoriesQuery.error,
+  });
+
   const CATEGORIES = [
     {
       id: 1,

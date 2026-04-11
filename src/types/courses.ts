@@ -17,6 +17,24 @@ export interface CourseInstructor {
   avatar?: string;
 }
 
+export interface Category {
+  id: number;
+  name: string;
+  icon: string;
+}
+
+export interface Topic {
+  id: number;
+  name: string;
+  categoryId: number;
+}
+
+export interface Instructor {
+  id: number;
+  name: string;
+  avatar: string;
+}
+
 export interface Course {
   id: number;
   title: string;
@@ -34,6 +52,18 @@ export interface Course {
 
 export interface FeaturedCoursesResponse {
   data: Course[];
+}
+
+export interface CategoriesResponse {
+  data: Category[];
+}
+
+export interface TopicsResponse {
+  data: Topic[];
+}
+
+export interface InstructorsResponse {
+  data: Instructor[];
 }
 
 export interface InProgressWeeklySchedule {

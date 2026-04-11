@@ -1,6 +1,17 @@
+// Renders static instructor chips and prepares instructor query integration.
+// Fetched values are logged for the first catalog connection step only.
 import INSTRUCTOR from "../../../assets/images/catalog/instructor.jpg";
+import useInstructors from "../../../api/hooks/useInstructors";
 
 const Instructor = () => {
+  const instructorsQuery = useInstructors();
+
+  console.log("Instructors filter query:", {
+    data: instructorsQuery.data,
+    isLoading: instructorsQuery.isLoading,
+    error: instructorsQuery.error,
+  });
+
   const INSTRUCTORS = [
     {
       id: 1,
