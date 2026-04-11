@@ -1,11 +1,22 @@
 // Wraps catalog filter blocks in a vertical sidebar layout.
-// Allows sections to grow naturally when backend data has more items.
+// Manages multi-select state for categories, topics, and instructors.
+import { useState } from "react";
 import CLOSE from "../../../assets/icons/authentification/ic_round-close.svg";
 
 import Categories from "./Categories";
 import Instructor from "./Instructor";
 import Topics from "./Topics";
+
+const toggleId = (items: number[], id: number) =>
+  items.includes(id) ? items.filter((item) => item !== id) : [...items, id];
+
 const Filter = () => {
+  const [selectedCategoryIds, setSelectedCategoryIds] = useState<number[]>([]);
+  const [selectedTopicIds, setSelectedTopicIds] = useState<number[]>([]);
+  const [selectedInstructorIds, setSelectedInstructorIds] = useState<number[]>(
+    [],
+  );
+
   return (
     <div className="w-[309px]">
       <div className="w-full h-[48px] flex flex-row items-center justify-between">
@@ -23,9 +34,18 @@ const Filter = () => {
           />
         </div>
       </div>
-      <Categories />
-      <Topics />
-      <Instructor />
+      <Categories
+        selectedIds={selectedCategoryIds}
+        onToggle={(id) => setSelectedCategoryIds((prev) => toggleId(prev, id))}
+      />
+      <Topics
+        selectedIds={selectedTopicIds}
+        onToggle={(id) => setSelectedTopicIds((prev) => toggleId(prev, id))}
+      />
+      <Instructor
+        selectedIds={selectedInstructorIds}
+        onToggle={(id) => setSelectedInstructorIds((prev) => toggleId(prev, id))}
+      />
     </div>
   );
 };

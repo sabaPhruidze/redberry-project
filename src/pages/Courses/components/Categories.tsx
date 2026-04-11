@@ -1,32 +1,11 @@
-// Renders catalog categories from backend data in the sidebar.
-// Maps backend category icon slugs to existing local catalog icons.
-import BUSINESS from "../../../assets/icons/courses/Icon Set=Business.svg";
-import DATA_SCIENCE from "../../../assets/icons/courses/Icon Set=Data Science.svg";
-import DESIGN from "../../../assets/icons/courses/Icon Set=Design.svg";
-import DEVELOPMENT from "../../../assets/icons/courses/Icon Set=Development.svg";
-import MARKETING from "../../../assets/icons/courses/Icon Set=Marketing.svg";
+// Renders category filter chips and applies selected highlight colors.
+// Keeps the same layout while using existing checkbox selection state.
 import useCategories from "../../../api/hooks/useCategories";
+import { getCategoryIconComponent } from "./categoryIconMap";
 
-const getCategoryIcon = (icon: string) => {
-  const normalizedIcon = icon.trim().toLowerCase().replaceAll("_", "-").replaceAll(" ", "-");
+type CategoriesProps = { selectedIds: number[]; onToggle: (id: number) => void };
 
-  switch (normalizedIcon) {
-    case "development":
-      return DEVELOPMENT;
-    case "design":
-      return DESIGN;
-    case "business":
-      return BUSINESS;
-    case "marketing":
-      return MARKETING;
-    case "data-science":
-      return DATA_SCIENCE;
-    default:
-      return "";
-  }
-};
-
-const Categories = () => {
+const Categories = ({ selectedIds, onToggle }: CategoriesProps) => {
   const { data, isLoading, error } = useCategories();
 
   return (
@@ -42,24 +21,38 @@ const Categories = () => {
       ) : null}
       <div className="mt-[24px] w-full flex flex-row flex-wrap gap-[8px]">
         {data?.map((item) => {
-          const iconSrc = getCategoryIcon(item.icon);
+          const isSelected = selectedIds.includes(item.id);
+          const Icon = getCategoryIconComponent(item.icon);
 
           return (
-            <div
+            <label
               key={item.id}
-              className="px-[12px] py-[8px] gap-[10px] flex flex-row bg-white rounded-[12px]"
+              className={`px-[12px] py-[8px] gap-[10px] flex flex-row rounded-[12px] ${
+                isSelected ? "bg-[#DDDBFA]" : "bg-white"
+              }`}
             >
-              {iconSrc ? (
-                <img
-                  src={iconSrc}
-                  alt={`${item.name} icon`}
-                  className="w-[24px] h-[24px]"
+              <input
+                type="checkbox"
+                checked={isSelected}
+                onChange={() => onToggle(item.id)}
+                className="sr-only"
+              />
+              {Icon ? (
+                <Icon
+                  aria-hidden
+                  className={`w-[24px] h-[24px] [&_path]:fill-current ${
+                    isSelected ? "text-[#4F46E5]" : "text-[#525252]"
+                  }`}
                 />
               ) : null}
-              <h4 className="text-[#666666] font-[500] leading-[24px]">
+              <h4
+                className={`font-[500] leading-[24px] ${
+                  isSelected ? "text-[#4F46E5]" : "text-[#666666]"
+                }`}
+              >
                 {item.name}
               </h4>
-            </div>
+            </label>
           );
         })}
       </div>
