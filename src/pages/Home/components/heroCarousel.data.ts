@@ -1,10 +1,10 @@
 import HERO_ONE_IMAGE from "../../../assets/images/home/hero_image.png";
 import HERO_TWO_IMAGE from "../../../assets/images/home/second.png";
 import HERO_THREE_IMAGE from "../../../assets/images/home/third.png";
-import LEFT_GRAY_ICON from "../../../assets/icons/left_gray.svg";
-import LEFT_WHITE_ICON from "../../../assets/icons/left_white.svg";
-import RIGHT_GRAY_ICON from "../../../assets/icons/right_gray.svg";
-import RIGHT_WHITE_ICON from "../../../assets/icons/right_white.svg";
+import LEFT_GRAY_ICON from "../../../assets/icons/home/left_gray.svg";
+import LEFT_WHITE_ICON from "../../../assets/icons/home/left_white.svg";
+import RIGHT_GRAY_ICON from "../../../assets/icons/home/right_gray.svg";
+import RIGHT_WHITE_ICON from "../../../assets/icons/home/right_white.svg";
 
 export type HeroSlide = {
   title: string;
