@@ -11,6 +11,7 @@ const HeroSection = () => {
   const activeSlide = HERO_SLIDES[currentSlide];
   const canGoPrev = currentSlide > 0;
   const canGoNext = currentSlide < HERO_SLIDES.length - 1;
+  const containerGapClass = currentSlide === 2 ? "gap-[74px]" : "gap-[31px]";
 
   const goPrev = () => {
     if (!canGoPrev) return;
@@ -30,12 +31,14 @@ const HeroSection = () => {
   return (
     <section className="py-[64px]">
       <div
-        className="relative text-white w-[1566px] h-[420px] rounded-[30px] p-[48px] flex flex-col gap-[12px]  bg-cover bg-center bg-no-repeat"
+        className={`relative text-white w-[1566px] h-[420px] rounded-[30px] flex flex-col ${containerGapClass} bg-cover bg-center bg-no-repeat ${activeSlide.containerPaddingClass}`}
         style={{ backgroundImage: `url(${activeSlide.image})` }}
       >
         <div className="flex w-[1470px] flex-col gap-[40px]">
           <div>
-            <h1 className="leading-[100%] text-[48px] font-bold h-[58px] ">
+            <h1
+              className={`leading-[100%] text-[48px] font-bold ${activeSlide.titleHeightClass}`}
+            >
               {activeSlide.title}
             </h1>
             {activeSlide.description ? (
@@ -46,11 +49,11 @@ const HeroSection = () => {
           </div>
           <Button
             text={activeSlide.buttonText}
-            classname="text-[20px] w-[206px] h-[64px]"
+            classname={`text-[20px] h-[64px] ${activeSlide.buttonWidthClass}`}
             onClick={() => navigate("/courses/catalog")}
           />
         </div>
-        <div className="relative mt-auto flex h-[54px] w-full items-center justify-center">
+        <div className="relative flex h-[54px] w-full items-center justify-center">
           <HeroIndicators
             slideCount={HERO_SLIDES.length}
             activeIndex={currentSlide}

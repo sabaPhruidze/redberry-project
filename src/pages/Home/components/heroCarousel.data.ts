@@ -10,6 +10,9 @@ export type HeroSlide = {
   title: string;
   description?: string;
   buttonText: string;
+  titleHeightClass: string;
+  buttonWidthClass: string;
+  containerPaddingClass: string;
   image: string;
   leftArrowIcon: string;
   rightArrowIcon: string;
@@ -23,6 +26,9 @@ export const HERO_SLIDES: HeroSlide[] = [
     description:
       "Explore a wide range of expert-led courses in design, development, business, and more. Find the skills you need to grow your career and learn at your own pace.",
     buttonText: "Browse Courses",
+    titleHeightClass: "h-[58px]",
+    buttonWidthClass: "w-[206px]",
+    containerPaddingClass: "pt-[48px] px-[48px] pb-[48px]",
     image: HERO_ONE_IMAGE,
     leftArrowIcon: LEFT_GRAY_ICON,
     rightArrowIcon: RIGHT_WHITE_ICON,
@@ -34,6 +40,9 @@ export const HERO_SLIDES: HeroSlide[] = [
     description:
       "Your learning journey is already in progress. Continue your enrolled courses, track your progress, and stay on track toward completing your goals.",
     buttonText: "Start Learning",
+    titleHeightClass: "h-[58px]",
+    buttonWidthClass: "w-[187px]",
+    containerPaddingClass: "pt-[48px] px-[48px] pb-[48px]",
     image: HERO_TWO_IMAGE,
     leftArrowIcon: LEFT_WHITE_ICON,
     rightArrowIcon: RIGHT_WHITE_ICON,
@@ -43,6 +52,9 @@ export const HERO_SLIDES: HeroSlide[] = [
   {
     title: "Learn together, grow faster",
     buttonText: "Learn More",
+    titleHeightClass: "h-[99px]",
+    buttonWidthClass: "w-[159px]",
+    containerPaddingClass: "p-[48px]",
     image: HERO_THREE_IMAGE,
     leftArrowIcon: LEFT_WHITE_ICON,
     rightArrowIcon: RIGHT_GRAY_ICON,

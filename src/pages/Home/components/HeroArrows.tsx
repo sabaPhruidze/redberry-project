@@ -7,6 +7,28 @@ type HeroArrowsProps = {
   onNext: () => void;
 };
 
+type HeroArrowButtonProps = {
+  icon: string;
+  canClick: boolean;
+  onClick: () => void;
+  ariaLabel: string;
+  altText: string;
+};
+
+const HeroArrowButton = ({ icon, canClick, onClick, ariaLabel, altText }: HeroArrowButtonProps) => {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={!canClick}
+      aria-label={ariaLabel}
+      className="h-[54px] w-[54px] disabled:cursor-not-allowed"
+    >
+      <img src={icon} alt={altText} className="h-[54px] w-[54px]" />
+    </button>
+  );
+};
+
 const HeroArrows = ({
   leftIcon,
   rightIcon,
@@ -17,24 +39,20 @@ const HeroArrows = ({
 }: HeroArrowsProps) => {
   return (
     <div className="flex h-[54px] w-[132px] items-center gap-[24px]">
-      <button
-        type="button"
+      <HeroArrowButton
+        icon={leftIcon}
+        canClick={canGoPrev}
         onClick={onPrev}
-        disabled={!canGoPrev}
-        aria-label="Previous slide"
-        className="h-[54px] w-[54px] disabled:cursor-not-allowed"
-      >
-        <img src={leftIcon} alt="Previous slide arrow" className="h-[54px] w-[54px]" />
-      </button>
-      <button
-        type="button"
+        ariaLabel="Previous slide"
+        altText="Previous slide arrow"
+      />
+      <HeroArrowButton
+        icon={rightIcon}
+        canClick={canGoNext}
         onClick={onNext}
-        disabled={!canGoNext}
-        aria-label="Next slide"
-        className="h-[54px] w-[54px] disabled:cursor-not-allowed"
-      >
-        <img src={rightIcon} alt="Next slide arrow" className="h-[54px] w-[54px]" />
-      </button>
+        ariaLabel="Next slide"
+        altText="Next slide arrow"
+      />
     </div>
   );
 };
