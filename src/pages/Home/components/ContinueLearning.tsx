@@ -4,7 +4,6 @@ import { useProtectedAction } from "../../../features/auth/hooks/useProtectedAct
 import { CONTINUE_LEARNING_DATA } from "./continueLearning.data";
 import { useAuthModal } from "../../../features/auth/hooks/useAuthModal";
 import useInProgressCourses from "../../../api/hooks/useInProgressCourses";
-import ContinueLearningEmptyState from "./ContinueLearningEmptyState";
 
 const getIsAuthenticated = () => {
   if (typeof window === "undefined") {
@@ -24,6 +23,10 @@ const ContinueLearning = () => {
   const hasEnrollments = courses.length > 0;
   const openEnrolledCourses = () =>
     handleProtectedAction(() => openEnrolledCoursesModal());
+
+  if (isAuthenticated && !isLoading && !isError && !hasEnrollments) {
+    return <section className="h-[137px]" />;
+  }
 
   return (
     <section>
@@ -50,9 +53,6 @@ const ContinueLearning = () => {
           <p className="mt-[32px] text-[16px] text-[#F4161A]">
             {error instanceof Error ? error.message : "Failed to load enrolled courses."}
           </p>
-        ) : null}
-        {isAuthenticated && !isLoading && !isError && !hasEnrollments ? (
-          <ContinueLearningEmptyState />
         ) : null}
         {!isAuthenticated ? (
           <div className="relative z-1 mt-[32px] flex h-[219px] w-full flex-row flex-wrap gap-[24px]">
