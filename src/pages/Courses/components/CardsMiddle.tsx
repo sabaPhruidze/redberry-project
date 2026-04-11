@@ -27,7 +27,7 @@ const CardsMiddle = () => {
     );
   }
   return (
-    <div>
+    <div className="w-[1167px] h-[1401px] flex flex-row flex-wrap gap-[24px] mt-[32px]">
       {data?.map((course) => (
         <div
           key={course.id}
