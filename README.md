@@ -145,3 +145,5 @@
 13. Connected the catalog results text and pagination UI to the real response metadata.
 14. Removed temporary mock catalog content that was previously written by hand.
 15. Kept the catalog layout unchanged while making the page use real fetched data.
+16. Increased the custom sort dropdown width so `Price: Low to High` and `Price: High to Low` fit cleanly in both trigger and menu.
+17. Kept the same custom dropdown behavior and aligned the top row layout so the wider control still stays stable next to the results text.
