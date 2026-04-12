@@ -3,7 +3,10 @@
 import useCategories from "../../../api/hooks/useCategories";
 import { getCategoryIconComponent } from "./categoryIconMap";
 
-type CategoriesProps = { selectedIds: number[]; onToggle: (id: number) => void };
+type CategoriesProps = {
+  selectedIds: number[];
+  onToggle: (id: number) => void;
+};
 
 const Categories = ({ selectedIds, onToggle }: CategoriesProps) => {
   const { data, isLoading, error } = useCategories();
@@ -19,7 +22,7 @@ const Categories = ({ selectedIds, onToggle }: CategoriesProps) => {
       {error ? (
         <p className="mt-[24px] text-[14px] text-[#F4161A]">Failed to load.</p>
       ) : null}
-      <div className="mt-[24px] w-full flex flex-row flex-wrap gap-[8px]">
+      <div className="mt-[24px] h-[133px] w-full flex flex-row flex-wrap gap-[8px]">
         {data?.map((item) => {
           const isSelected = selectedIds.includes(item.id);
           const Icon = getCategoryIconComponent(item.icon);

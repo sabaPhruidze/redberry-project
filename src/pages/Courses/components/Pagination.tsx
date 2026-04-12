@@ -1,6 +1,6 @@
 // Renders catalog pagination controls from backend metadata.
 // Keeps the existing pagination look while using real page values.
-import ARROW from "../../../assets/icons/courses/Icon Set=ArrowRight.svg";
+import ARROW_ICON from "../../../assets/icons/courses/Icon Set=ArrowRight.svg?react";
 
 type PaginationProps = {
   currentPage: number;
@@ -28,6 +28,8 @@ const Pagination = ({ currentPage, lastPage, perPage, total, onPageChange }: Pag
   const derivedLastPage = perPage > 0 ? Math.ceil(total / perPage) : 1;
   const safeLastPage = Math.max(lastPage || derivedLastPage || 1, 1);
   const safeCurrentPage = Math.min(Math.max(currentPage, 1), safeLastPage);
+  const isPrevDisabled = safeCurrentPage === 1;
+  const isNextDisabled = safeCurrentPage === safeLastPage;
   const pages = buildPages(safeCurrentPage, safeLastPage);
 
   return (
@@ -35,10 +37,16 @@ const Pagination = ({ currentPage, lastPage, perPage, total, onPageChange }: Pag
       <div className="mt-[32px] h-full flex flex-row">
         <button
           type="button"
+          disabled={isPrevDisabled}
           onClick={() => onPageChange(Math.max(1, safeCurrentPage - 1))}
           className="mr-[8px] flex justify-center items-center w-[40px] h-[40px] bg-white border border-[#D1D1D1]"
         >
-          <img src={ARROW} alt="previous page" className="w-[15px] h-[23px] rotate-180" />
+          <ARROW_ICON
+            aria-hidden
+            className={`w-[15px] h-[23px] rotate-180 [&_path]:fill-current ${
+              isPrevDisabled ? "text-[#D1D1D1]" : "text-[#4F46E5]"
+            }`}
+          />
         </button>
         {pages.map((page, index) =>
           page === "ellipsis" ? (
@@ -60,10 +68,16 @@ const Pagination = ({ currentPage, lastPage, perPage, total, onPageChange }: Pag
         )}
         <button
           type="button"
+          disabled={isNextDisabled}
           onClick={() => onPageChange(Math.min(safeLastPage, safeCurrentPage + 1))}
           className="flex justify-center items-center w-[40px] h-[40px] bg-white border border-[#D1D1D1]"
         >
-          <img src={ARROW} alt="next page" className="w-[15px] h-[23px]" />
+          <ARROW_ICON
+            aria-hidden
+            className={`w-[15px] h-[23px] [&_path]:fill-current ${
+              isNextDisabled ? "text-[#D1D1D1]" : "text-[#4F46E5]"
+            }`}
+          />
         </button>
       </div>
     </div>

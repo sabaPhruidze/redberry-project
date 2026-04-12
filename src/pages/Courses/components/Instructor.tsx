@@ -16,8 +16,8 @@ const Instructor = ({
   const { data, isLoading, error } = useInstructors();
 
   return (
-    <div className="w-[179px] mt-[56px] gap-[24px] flex flex-col">
-      <h3 className="text-[#666666] font-[500] text-[18px] leading-[100%] w-[179px] h-[22px]">
+    <div className="w-full mt-[56px] gap-[24px] flex flex-col">
+      <h3 className="text-[#666666] font-[500] text-[18px] leading-[100%]">
         Instructor
       </h3>
       {isLoading ? (
@@ -26,14 +26,14 @@ const Instructor = ({
       {error ? (
         <p className="text-[14px] text-[#F4161A]">Failed to load.</p>
       ) : null}
-      <div className="flex flex-col w-[179px] gap-[8px]">
+      <div className="flex flex-col w-full gap-[8px]">
         {data?.map((item) => {
           const isSelected = selectedIds.includes(item.id);
 
           return (
             <label
               key={item.id}
-              className={`px-[12px] py-[8px] gap-[10px] flex flex-row rounded-[12px] ${
+              className={`self-start inline-flex items-center px-[12px] py-[8px] gap-[12px] rounded-[12px] ${
                 isSelected ? "bg-[#DDDBFA]" : "bg-white"
               }`}
             >

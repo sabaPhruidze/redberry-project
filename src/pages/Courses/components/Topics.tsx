@@ -18,6 +18,7 @@ const Topics = ({
 }: TopicsProps) => {
   const categoryIds = selectedCategoryIds.length ? selectedCategoryIds : undefined;
   const { data, isLoading, error } = useTopics(categoryIds);
+  const hasTopicsData = Boolean(data?.length);
 
   useEffect(() => {
     if (!data) return;
@@ -29,10 +30,10 @@ const Topics = ({
       <h3 className="w-full h-[22px] text-[#666666] font-[500] text-[18px] leading-[100%]">
         Topics
       </h3>
-      {isLoading ? (
+      {isLoading && !hasTopicsData ? (
         <p className="mt-[24px] text-[14px] text-[#8A8A8A]">Loading...</p>
       ) : null}
-      {error ? (
+      {error && !hasTopicsData ? (
         <p className="mt-[24px] text-[14px] text-[#F4161A]">Failed to load.</p>
       ) : null}
       <div className="mt-[24px] w-full flex flex-row flex-wrap gap-[8px]">

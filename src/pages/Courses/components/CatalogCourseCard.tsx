@@ -51,7 +51,7 @@ const CatalogCourseCard = ({ course }: CatalogCourseCardProps) => {
   return (
     <Link
       to={`/courses/${course.id}`}
-      className="block w-[373px] h-[451px] p-[20px] rounded-[12px] bg-white border border-[#F5F5F5]"
+      className="flex w-[373px] h-[451px] flex-col rounded-[12px] border border-[#F5F5F5] bg-white p-[20px]"
     >
       <img src={course.image} alt={course.title} className="w-full h-[181px]" />
       <div className="mt-[18px] mb-[12px] flex flex-row justify-between w-full">
@@ -78,7 +78,7 @@ const CatalogCourseCard = ({ course }: CatalogCourseCardProps) => {
         ) : null}
         <h4 className="text-[#525252] font-[500] leading-[24px]">{categoryName}</h4>
       </div>
-      <div className="flex flex-row w-full h-[48px] justify-between items-center">
+      <div className="mt-auto flex flex-row w-full h-[48px] justify-between items-center">
         <div className="w-[167px] h-full flex flex-col">
           <p className="w-[76px] h-[15px] font-[500] text-[12px] leading-none text-[#999999]">
             Starting from
