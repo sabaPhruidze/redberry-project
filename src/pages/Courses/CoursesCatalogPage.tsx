@@ -2,7 +2,7 @@
 // Keeps the same layout while wiring real-time filtered list behavior.
 import { useCallback, useState } from "react";
 import MainLayout from "../../layouts/MainLayout";
-import Breadcrumb from "./components/Breadcrumb";
+import BreadcrumbCatalog from "./components/BreadcrumbCatalog";
 import Cards from "./components/Cards";
 import Filter from "./components/Filter";
 
@@ -33,7 +33,7 @@ const CoursesCatalogPage = () => {
   return (
     <MainLayout>
       <div className="w-[1920px] px-[177px] pt-[69.5px] pb-[161px]">
-        <Breadcrumb />
+        <BreadcrumbCatalog />
         <div className="flex flex-row mt-[34px] gap-[90px]">
           <Filter
             selectedCategoryIds={selectedCategoryIds}

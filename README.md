@@ -148,3 +148,7 @@
 16. Increased the custom sort dropdown width so `Price: Low to High` and `Price: High to Low` fit cleanly in both trigger and menu.
 17. Kept the same custom dropdown behavior and aligned the top row layout so the wider control still stays stable next to the results text.
 18. left parts filter works and cards are filtered by categories , mentor and topics
+
+## courses/catalog individual page
+
+1. built visual

@@ -1,6 +1,6 @@
 import RIGHT_ARROW from "../../../assets/icons/courses/right-arrow.svg";
 
-const Breadcrumb = () => {
+const BreadcrumbCatalog = () => {
   return (
     <div className="w-[149px] h-[28px] flex flex-row items-center">
       <p className="font-[500] text-[18px] leading-[100%] text-[#666666]">
@@ -18,4 +18,4 @@ const Breadcrumb = () => {
   );
 };
 
-export default Breadcrumb;
+export default BreadcrumbCatalog;
