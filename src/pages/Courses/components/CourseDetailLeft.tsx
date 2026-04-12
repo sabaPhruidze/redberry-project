@@ -23,7 +23,7 @@ const CourseDetailLeft = () => {
     <div id="left" className="w-[903px]">
       <div className="w-full">
         <BreadcrumbIndividual />
-        <h1 className="mt-[32px] text-[#141414] font-[600] text-[40px] leading-[100%]">
+        <h1 className="mt-[32px] text-[#141414] font-[600] text-[40px] leading-[100%] h-[48px]">
           Advanced React & TypeScript Development
         </h1>
       </div>

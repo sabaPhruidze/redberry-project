@@ -6,13 +6,13 @@ const WeeklySchedule = () => {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
 
   return (
-    <div className="w-[full] h-[138px] ">
+    <div className="w-[full] h-[138px]">
       <div className="w-full h-[30px] flex flex-row justify-between items-center">
         <img src={ONE} alt="one icon" className="w-[28px] h-[28px]" />
         <div className="w-[457px] h-[30px] ml-[8px] mr-[7px] text-left">
-          <p className="text-[#130E67] font-[600] text-[24px] leading-[100%]">
+          <h2 className="text-[#130E67] font-[600] text-[24px] leading-[100%]">
             Weekly Schedule
-          </p>
+          </h2>
         </div>
         <ARROW_DOWN
           aria-hidden
