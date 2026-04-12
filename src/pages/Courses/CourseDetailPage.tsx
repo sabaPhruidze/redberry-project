@@ -2,12 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import MainLayout from "../../layouts/MainLayout";
 import useFeaturedCourses from "../../api/hooks/useFeaturedCourses";
 import useInProgressCourses from "../../api/hooks/useInProgressCourses";
-import BreadcrumbIndividual from "./components/BreadcrumbIndividual";
-import MOCK_IMAGE from "../../assets/images/home/mock_course_in_progress.png";
+import CourseDetailLeft from "./components/CourseDetailLeft";
 
-import HALF_STAR from "../../assets/icons/home/Star (1).svg";
-import EMPTY_STAR from "../../assets/icons/home/Star (2).svg";
-import STAR from "../../assets/icons/home/Star.svg";
 const getIsAuthenticated = () => {
   if (typeof window === "undefined") {
     return false;
@@ -28,15 +24,6 @@ const CourseDetailPage = () => {
   )?.course;
   const course = selectedCourse ?? inProgressCourse;
 
-  const getRatingIcon = (avgRating: number) => {
-    if (!avgRating) {
-      return EMPTY_STAR;
-    }
-    if (avgRating <= 4) {
-      return HALF_STAR;
-    }
-    return STAR;
-  };
   return (
     <MainLayout>
       <div className="w-[1920px] px-[177px] py-[64px]">
@@ -70,37 +57,7 @@ const CourseDetailPage = () => {
         ) : null}
         {!isLoading && !isError && course ? (
           <div>
-            <div id="left" className="w-[903px]">
-              <div className="w-full">
-                <BreadcrumbIndividual />
-                <h1 className="mt-[32px] text-[#141414] font-[600] text-[40px] leading-[100%]">
-                  Advanced React & TypeScript Development
-                </h1>
-              </div>
-              <div className="w-full mt-[24px]">
-                <img
-                  src={MOCK_IMAGE}
-                  alt="Mock image"
-                  className="w-full fill"
-                />
-                <div className="mt-[18px] mb-[12px] flex flex-row justify-between w-full">
-                  <p className="leading-[100%] font-[500] text-[14px] text-[#ADADAD]">
-                    {course.instructor?.name ?? ""} |{" "}
-                    {course.durationWeeks ?? ""} Weeks
-                  </p>
-                  <div className="flex flex-row items-center gap-[4px]">
-                    <img
-                      src={getRatingIcon(course.avgRating)}
-                      alt="star icon"
-                      className="w-[18px] h-[18px]"
-                    />
-                    <p className="font-[500] text-[14px] leading-[100%] text-redberry-text-gray-light">
-                      {course.avgRating}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CourseDetailLeft />
             <div id="right"></div>
           </div>
         ) : null}
