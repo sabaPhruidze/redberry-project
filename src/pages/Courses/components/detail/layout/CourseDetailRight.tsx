@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import useCreateEnrollment from "../../../../../api/hooks/useCreateEnrollment";
 import useCourseDetailAccordion from "../../../../../hooks/useCourseDetailAccordion";
 import useCourseScheduleSelection from "../../../../../hooks/useCourseScheduleSelection";
 import useCourseWeeklySchedules from "../../../../../api/hooks/useCourseWeeklySchedules";
@@ -19,6 +20,7 @@ interface CourseDetailRightProps {
 }
 
 const CourseDetailRight = ({ courseId, courseBasePrice }: CourseDetailRightProps) => {
+  const createEnrollmentMutation = useCreateEnrollment();
   const { data: weeklySchedulesResponse } = useCourseWeeklySchedules(courseId);
   const weeklySchedules = useMemo(() => weeklySchedulesResponse?.data ?? [], [weeklySchedulesResponse]);
   const displayWeeklySchedules = useMemo(
@@ -39,12 +41,26 @@ const CourseDetailRight = ({ courseId, courseBasePrice }: CourseDetailRightProps
   const isAuthenticated = typeof window !== "undefined" && Boolean(localStorage.getItem("access_token"));
   const isProfileComplete = getIsProfileCompleteFromUser(authUser);
   const hasCompleteAccess = isAuthenticated && isProfileComplete;
+  const selectedCourseScheduleId = selection.selectedSessionType?.courseScheduleId;
   const isEnrollButtonActive =
     hasCompleteAccess &&
     selection.selectedWeeklyScheduleId != null &&
     selection.selectedTimeSlotId != null &&
-    selection.selectedSessionTypeId != null;
+    selection.selectedSessionTypeId != null &&
+    selectedCourseScheduleId != null;
   const noticeVariant = !isAuthenticated ? "auth" : !isProfileComplete ? "profile" : null;
+
+  const handleEnroll = () => {
+    if (!isEnrollButtonActive || selectedCourseScheduleId == null) {
+      return;
+    }
+
+    createEnrollmentMutation.mutate({
+      courseId,
+      courseScheduleId: selectedCourseScheduleId,
+      force: false,
+    });
+  };
 
   return (
     <div className="mt-[130px] w-[530px] flex flex-col gap-[32px]">
@@ -56,6 +72,8 @@ const CourseDetailRight = ({ courseId, courseBasePrice }: CourseDetailRightProps
         sessionTypeModifier={selection.sessionTypeModifier}
         totalPrice={selection.totalPrice}
         isEnrollButtonActive={isEnrollButtonActive}
+        isEnrollPending={createEnrollmentMutation.isPending}
+        onEnroll={handleEnroll}
       />
       {noticeVariant ? (
         <EnrollmentAccessNotice variant={noticeVariant} onAction={noticeVariant === "auth" ? openLoginModal : openProfileModal} />

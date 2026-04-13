@@ -3,6 +3,8 @@ interface TotalPriceProps {
   sessionTypeModifier: number;
   totalPrice: number;
   isEnrollButtonActive: boolean;
+  isEnrollPending: boolean;
+  onEnroll: () => void;
 }
 
 const toSafeNumber = (value: unknown) => {
@@ -30,6 +32,8 @@ const TotalPrice = ({
   sessionTypeModifier,
   totalPrice,
   isEnrollButtonActive,
+  isEnrollPending,
+  onEnroll,
 }: TotalPriceProps) => {
   return (
     <div className="w-[530px] h-[306px] p-[40px] border border-[#F5F5F5] rounded-[12px] bg-white">
@@ -61,9 +65,12 @@ const TotalPrice = ({
       </div>
       <button
         type="button"
-        disabled={!isEnrollButtonActive}
+        disabled={!isEnrollButtonActive || isEnrollPending}
+        onClick={onEnroll}
         className={`mt-[32px] w-full h-[63px] rounded-[12px] text-[20px] font-[600] text-center leading-[24px] ${
-          isEnrollButtonActive ? "bg-[#281ED2] text-[#FFFFFF]" : "bg-[#EEEDFC] text-[#B7B3F4]"
+          isEnrollButtonActive && !isEnrollPending
+            ? "bg-[#281ED2] text-[#FFFFFF]"
+            : "bg-[#EEEDFC] text-[#B7B3F4]"
         }`}
       >
         Enroll Now
