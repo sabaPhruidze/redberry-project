@@ -163,6 +163,7 @@
 7. Time Slot and Session Type cards now visibly render backend values in-place (real labels/times, session names, modifiers, seats, and location text).
 8. Unavailable options now stay visible but use disabled UI colors across weekly schedule, time slot, and session type cards.
 9. Right-side detail sections (Weekly Schedule, Time Slot, Session Type) now support independent open/close accordion behavior with smooth arrow/content animation, while keeping the same backend-driven selections and reset logic.
+10. Breadcrumb receives relevant category and display's it on the head of the left part also when home or browse clicked it will move on relevant page
 
 ## IMPORTANT CHANGES
 
