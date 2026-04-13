@@ -23,7 +23,7 @@ const TimeSlot = ({
       <button
         type="button"
         onClick={onToggle}
-        className="w-full h-[30px] flex flex-row justify-between items-center"
+        className="w-full h-[30px] flex flex-row justify-between items-center cursor-pointer"
       >
         <img src={TWO} alt="one icon" className="w-[28px] h-[28px]" />
         <div className="w-[457px] h-[30px] mx-[8px] text-left">

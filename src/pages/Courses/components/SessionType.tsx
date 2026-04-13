@@ -23,7 +23,7 @@ const SessionType = ({
       <button
         type="button"
         onClick={onToggle}
-        className="w-full h-[30px] flex flex-row justify-between items-center"
+        className="w-full h-[30px] flex flex-row justify-between items-center cursor-pointer"
       >
         <img src={THREE} alt="one icon" className="w-[28px] h-[28px]" />
         <div className="w-[457px] h-[30px] ml-[8px] mr-[7px] text-left">
