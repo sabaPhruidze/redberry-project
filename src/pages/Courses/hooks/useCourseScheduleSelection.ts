@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import useCourseSessionTypes from "../../../api/hooks/useCourseSessionTypes";
 import useCourseTimeSlots from "../../../api/hooks/useCourseTimeSlots";
 import type { WeeklyScheduleOption } from "../../../types/courseDetail";
@@ -95,17 +95,7 @@ const useCourseScheduleSelection = ({
     selectedSessionType?.priceModifier ?? 0,
   );
   const totalPrice = toSafeNumber(courseBasePrice) + sessionTypeModifier;
-  useEffect(() => {
-    console.log("WeeklyScheduleId:", selectedWeeklyScheduleId);
-    console.log("TimeSlotId:", selectedTimeSlotId);
-    console.log("timeSlots response:", timeSlotsResponse?.data);
-    console.log("sessionTypes response:", sessionTypesResponse?.data);
-  }, [
-    selectedWeeklyScheduleId,
-    selectedTimeSlotId,
-    timeSlotsResponse,
-    sessionTypesResponse,
-  ]);
+
   return {
     selectedWeeklyScheduleId,
     selectedTimeSlotId,
