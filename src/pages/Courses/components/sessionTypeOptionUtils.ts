@@ -81,12 +81,14 @@ export const getDisplaySessionTypes = (options: SessionTypeOption[]) => {
 };
 
 export const formatPriceModifier = (priceModifier: number) => {
-  if (priceModifier === 0) {
+  const normalizedModifier = Number(priceModifier);
+
+  if (!Number.isFinite(normalizedModifier) || normalizedModifier === 0) {
     return "Included";
   }
 
-  const amount = Math.abs(priceModifier);
-  const prefix = priceModifier > 0 ? "+" : "-";
+  const amount = Math.abs(normalizedModifier);
+  const prefix = normalizedModifier > 0 ? "+" : "-";
 
   return `${prefix} $${amount}`;
 };
