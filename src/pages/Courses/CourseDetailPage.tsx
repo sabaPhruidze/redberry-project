@@ -19,7 +19,7 @@ const CourseDetailPage = () => {
   const course = courseDetailResponse?.data;
   return (
     <MainLayout>
-      <div className="w-[1920px] px-[177px] py-[64px]">
+      <div className="w-[1920px] px-[177px] pt-[64px] pb-[225.8px]">
         {isLoading ? (
           <p className="text-[18px] text-[#666666]">
             Loading course details...

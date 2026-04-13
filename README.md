@@ -127,6 +127,8 @@
 - profile feedback states were polished.
 - profile indicator now reflects completion state.
 - modal close behavior now respects incomplete profile rules.
+- Replaced the inline incomplete-profile close prompt with a centered 476x486 feedback dialog, matched the exact Figma spacing, and used the new profile user icon asset.
+- Finished the additional turn off modal
 
 ## courses/catalog page
 
