@@ -43,23 +43,23 @@ const SessionTypeCard = ({ option, isSelected, onSelect }: SessionTypeCardProps)
           {sessionTypeName}
         </h3>
         {showLocation ? (
-          <div className={`w-[131.3px] h-[15px] font-[400] text-[12px] leading-[100%] flex flex-row justify-evenly items-center ${textColor}`}>
+          <div className={`w-[131.3px] h-[15px] font-[400] text-[12px] leading-[100%] flex flex-row items-center justify-center gap-[4px] ${textColor}`}>
             <LOCATION
               aria-hidden
-              className={`w-[12px] h-[12px] [&_path]:fill-current ${textColor}`}
+              className={`w-[12px] h-[12px] [&_path]:fill-current [&_path]:stroke-current ${textColor}`}
             />
             <p>{locationText}</p>
           </div>
         ) : null}
         <p
-          className={`mt-[12px] text-[14px] font-[500] leading-[100%] ${
+          className={`mt-[12px] w-[131.33px] h-[17px] text-center text-[14px] font-[500] leading-[100%] ${
             isUnavailable ? "text-[#D1D1D1]" : "text-[#736BEA]"
           }`}
         >
           {formatPriceModifier(option.priceModifier)}
         </p>
       </button>
-      <div className="text-center font-[500] text-[12px] leading-[100%]">
+      <div className="w-full text-center">
         <SessionTypeAvailability
           isUnavailable={isUnavailable}
           hasLimitedSeats={hasLimitedSeats}

@@ -13,14 +13,24 @@ const SessionTypeAvailability = ({
 }: SessionTypeAvailabilityProps) => {
   if (hasLimitedSeats) {
     return (
-      <div className="flex flex-row h-[15px] items-center justify-center gap-[4px]">
+      <div className="mx-auto flex h-[15px] w-[136px] flex-row items-center justify-center gap-[4px]">
         <img src={WARNING} alt="warning icon" className="w-[16px] h-[16px]" />
-        <p className="text-[#F4A316]">{statusText}</p>
+        <p className="text-[12px] font-[500] leading-[100%] text-[#F4A316] whitespace-nowrap">
+          {statusText}
+        </p>
       </div>
     );
   }
 
-  return <p className={isUnavailable ? "text-[#D1D1D1]" : "text-[#3D3D3D]"}>{statusText}</p>;
+  return (
+    <p
+      className={`mx-auto h-[15px] text-center text-[12px] font-[500] leading-[100%] ${
+        isUnavailable ? "text-[#D1D1D1]" : "text-[#3D3D3D]"
+      }`}
+    >
+      {statusText}
+    </p>
+  );
 };
 
 export default SessionTypeAvailability;

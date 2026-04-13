@@ -88,7 +88,7 @@ export const formatPriceModifier = (priceModifier: number) => {
   const amount = Math.abs(priceModifier);
   const prefix = priceModifier > 0 ? "+" : "-";
 
-  return `${prefix}$${amount}`;
+  return `${prefix} $${amount}`;
 };
 
 export const getSeatsStatusText = (availableSeats: number) => {
@@ -96,7 +96,7 @@ export const getSeatsStatusText = (availableSeats: number) => {
     return "Fully Booked";
   }
   if (availableSeats < 5) {
-    return `Only ${availableSeats} seats remaining`;
+    return `Only ${availableSeats} Seats Remaining`;
   }
 
   return `${availableSeats} Seats Available`;
