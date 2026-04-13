@@ -2,9 +2,9 @@
 // Keeps the same layout while wiring real-time filtered list behavior.
 import { useCallback, useState } from "react";
 import MainLayout from "../../layouts/MainLayout";
-import BreadcrumbCatalog from "./components/BreadcrumbCatalog";
-import Cards from "./components/Cards";
-import Filter from "./components/Filter";
+import BreadcrumbCatalog from "./components/catalog/breadcrumbs/BreadcrumbCatalog";
+import Cards from "./components/catalog/listing/Cards";
+import Filter from "./components/catalog/filters/Filter";
 
 const toggleId = (items: number[], id: number) =>
   items.includes(id) ? items.filter((item) => item !== id) : [...items, id];

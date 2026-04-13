@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import MainLayout from "../../layouts/MainLayout";
 import useCourseDetail from "../../api/hooks/useCourseDetail";
-import CourseDetailLeft from "./components/CourseDetailLeft";
-import CourseDetailRight from "./components/CourseDetailRight";
+import CourseDetailLeft from "./components/detail/layout/CourseDetailLeft";
+import CourseDetailRight from "./components/detail/layout/CourseDetailRight";
 const CourseDetailPage = () => {
   const params = useParams<{ id: string }>();
   const parsedCourseId = Number(params.id);
