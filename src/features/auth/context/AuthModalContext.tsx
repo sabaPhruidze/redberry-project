@@ -1,4 +1,10 @@
-import { createContext, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useMemo,
+  useReducer,
+  type ReactNode,
+} from "react";
 
 type AuthModalContextType = {
   isLoginModalOpen: boolean;
@@ -23,78 +29,129 @@ type AuthModalProviderProps = {
   children: ReactNode;
 };
 
+type AuthModalKey = "login" | "register" | "enrolledCourses" | "profile";
+
+type AuthModalState = {
+  activeModal: AuthModalKey | null;
+};
+
+type AuthModalAction =
+  | {
+      type: "OPEN_MODAL";
+      modal: AuthModalKey;
+    }
+  | {
+      type: "CLOSE_MODAL";
+      modal: AuthModalKey;
+    };
+
+const initialAuthModalState: AuthModalState = {
+  activeModal: null,
+};
+
+const authModalReducer = (
+  state: AuthModalState,
+  action: AuthModalAction,
+): AuthModalState => {
+  if (action.type === "OPEN_MODAL") {
+    if (state.activeModal === action.modal) {
+      return state;
+    }
+
+    return { activeModal: action.modal };
+  }
+
+  if (state.activeModal !== action.modal) {
+    return state;
+  }
+
+  return { activeModal: null };
+};
+
 export const AuthModalProvider = ({ children }: AuthModalProviderProps) => {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  const [isEnrolledCoursesModalOpen, setIsEnrolledCoursesModalOpen] =
-    useState(false);
-  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [state, dispatch] = useReducer(authModalReducer, initialAuthModalState);
 
-  const openLoginModal = () => {
-    setIsEnrolledCoursesModalOpen(false);
-    setIsProfileModalOpen(false);
-    setIsRegisterModalOpen(false);
-    setIsLoginModalOpen(true);
-  };
+  const openModal = useCallback((modal: AuthModalKey) => {
+    dispatch({ type: "OPEN_MODAL", modal });
+  }, []);
 
-  const openRegisterModal = () => {
-    setIsEnrolledCoursesModalOpen(false);
-    setIsProfileModalOpen(false);
-    setIsLoginModalOpen(false);
-    setIsRegisterModalOpen(true);
-  };
+  const closeModal = useCallback((modal: AuthModalKey) => {
+    dispatch({ type: "CLOSE_MODAL", modal });
+  }, []);
 
-  const openEnrolledCoursesModal = () => {
-    setIsLoginModalOpen(false);
-    setIsRegisterModalOpen(false);
-    setIsProfileModalOpen(false);
-    setIsEnrolledCoursesModalOpen(true);
-  };
+  const openLoginModal = useCallback(() => openModal("login"), [openModal]);
+  const openRegisterModal = useCallback(
+    () => openModal("register"),
+    [openModal],
+  );
+  const openEnrolledCoursesModal = useCallback(
+    () => openModal("enrolledCourses"),
+    [openModal],
+  );
+  const openProfileModal = useCallback(() => openModal("profile"), [openModal]);
 
-  const openProfileModal = () => {
-    setIsLoginModalOpen(false);
-    setIsRegisterModalOpen(false);
-    setIsEnrolledCoursesModalOpen(false);
-    setIsProfileModalOpen(true);
-  };
+  const closeLoginModal = useCallback(
+    () => closeModal("login"),
+    [closeModal],
+  );
+  const closeRegisterModal = useCallback(
+    () => closeModal("register"),
+    [closeModal],
+  );
+  const closeEnrolledCoursesModal = useCallback(
+    () => closeModal("enrolledCourses"),
+    [closeModal],
+  );
+  const closeProfileModal = useCallback(
+    () => closeModal("profile"),
+    [closeModal],
+  );
 
-  const closeLoginModal = () => setIsLoginModalOpen(false);
-  const closeRegisterModal = () => setIsRegisterModalOpen(false);
-  const closeEnrolledCoursesModal = () => setIsEnrolledCoursesModalOpen(false);
-  const closeProfileModal = () => setIsProfileModalOpen(false);
-  const switchToLoginModal = () => {
-    setIsEnrolledCoursesModalOpen(false);
-    setIsProfileModalOpen(false);
-    setIsRegisterModalOpen(false);
-    setIsLoginModalOpen(true);
-  };
+  const switchToLoginModal = openLoginModal;
+  const switchToRegisterModal = openRegisterModal;
 
-  const switchToRegisterModal = () => {
-    setIsEnrolledCoursesModalOpen(false);
-    setIsProfileModalOpen(false);
-    setIsLoginModalOpen(false);
-    setIsRegisterModalOpen(true);
-  };
+  const isLoginModalOpen = state.activeModal === "login";
+  const isRegisterModalOpen = state.activeModal === "register";
+  const isEnrolledCoursesModalOpen = state.activeModal === "enrolledCourses";
+  const isProfileModalOpen = state.activeModal === "profile";
+
+  const contextValue = useMemo<AuthModalContextType>(
+    () => ({
+      isLoginModalOpen,
+      isRegisterModalOpen,
+      isEnrolledCoursesModalOpen,
+      isProfileModalOpen,
+      openLoginModal,
+      openRegisterModal,
+      openEnrolledCoursesModal,
+      openProfileModal,
+      closeLoginModal,
+      closeRegisterModal,
+      closeEnrolledCoursesModal,
+      closeProfileModal,
+      switchToLoginModal,
+      switchToRegisterModal,
+    }),
+    [
+      isLoginModalOpen,
+      isRegisterModalOpen,
+      isEnrolledCoursesModalOpen,
+      isProfileModalOpen,
+      openLoginModal,
+      openRegisterModal,
+      openEnrolledCoursesModal,
+      openProfileModal,
+      closeLoginModal,
+      closeRegisterModal,
+      closeEnrolledCoursesModal,
+      closeProfileModal,
+      switchToLoginModal,
+      switchToRegisterModal,
+    ],
+  );
 
   return (
-    <AuthModalContext.Provider
-      value={{
-        isLoginModalOpen,
-        isRegisterModalOpen,
-        isEnrolledCoursesModalOpen,
-        isProfileModalOpen,
-        openLoginModal,
-        openRegisterModal,
-        openEnrolledCoursesModal,
-        openProfileModal,
-        closeLoginModal,
-        closeRegisterModal,
-        closeEnrolledCoursesModal,
-        closeProfileModal,
-        switchToLoginModal,
-        switchToRegisterModal,
-      }}
-    >
+    <AuthModalContext.Provider value={contextValue}>
       {children}
     </AuthModalContext.Provider>
   );
