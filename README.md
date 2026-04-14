@@ -181,3 +181,4 @@
 ## Enrolled courses
 
 1. Enrolled Courses now uses a dedicated animated right sidebar shell (overlay fade + right slide), and currently renders the empty-state panel layout for the next UI step.
+2. built the empty case version similar how it looks in figma file
