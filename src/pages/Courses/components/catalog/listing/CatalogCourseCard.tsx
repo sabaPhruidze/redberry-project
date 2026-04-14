@@ -1,11 +1,15 @@
 // Renders one catalog course card using real backend course fields.
 // Maps backend category icon slugs to existing local category icons.
 import { Link } from "react-router-dom";
+import BUSINESS_ICON from "../../../../../assets/icons/courses/Icon Set=Business.svg?react";
+import DATA_SCIENCE_ICON from "../../../../../assets/icons/courses/Icon Set=Data Science.svg?react";
+import DESIGN_ICON from "../../../../../assets/icons/courses/Icon Set=Design.svg?react";
+import DEVELOPMENT_ICON from "../../../../../assets/icons/courses/Icon Set=Development.svg?react";
+import MARKETING_ICON from "../../../../../assets/icons/courses/Icon Set=Marketing.svg?react";
 import HALF_STAR from "../../../../../assets/icons/home/Star (1).svg";
 import EMPTY_STAR from "../../../../../assets/icons/home/Star (2).svg";
 import STAR from "../../../../../assets/icons/home/Star.svg";
 import type { CourseCardItem } from "../../../../../types/courses";
-import { getCategoryIconComponent } from "../filters/categoryIconMap";
 
 type CatalogCourseCardProps = {
   course: CourseCardItem;
@@ -21,9 +25,28 @@ const getRatingIcon = (avgRating: number) => {
   return STAR;
 };
 
+const renderCategoryIcon = (icon: string) => {
+  const normalizedIcon = icon.trim().toLowerCase().replaceAll("_", "-").replaceAll(" ", "-");
+  const iconClassName = "h-[18px] w-[18px] [&_path]:fill-current text-[#525252]";
+
+  switch (normalizedIcon) {
+    case "development":
+      return <DEVELOPMENT_ICON aria-hidden className={iconClassName} />;
+    case "design":
+      return <DESIGN_ICON aria-hidden className={iconClassName} />;
+    case "business":
+      return <BUSINESS_ICON aria-hidden className={iconClassName} />;
+    case "marketing":
+      return <MARKETING_ICON aria-hidden className={iconClassName} />;
+    case "data-science":
+      return <DATA_SCIENCE_ICON aria-hidden className={iconClassName} />;
+    default:
+      return null;
+  }
+};
+
 const CatalogCourseCard = ({ course }: CatalogCourseCardProps) => {
   const categoryName = course.category?.name ?? "";
-  const CategoryIcon = getCategoryIconComponent(course.category?.icon ?? "");
   const ratingValue = Number(course.avgRating);
   const displayRating = Number.isFinite(ratingValue) ? ratingValue.toFixed(1) : "0";
   const ratingNumber = Number(displayRating);
@@ -49,12 +72,7 @@ const CatalogCourseCard = ({ course }: CatalogCourseCardProps) => {
         {course.title}
       </h2>
       <div className="mb-[18px] inline-flex self-start items-center gap-[6px] rounded-[12px] bg-[#F5F5F5] px-[12px] py-[8px]">
-        {CategoryIcon ? (
-          <CategoryIcon
-            aria-hidden
-            className="h-[18px] w-[18px] [&_path]:fill-current text-[#525252]"
-          />
-        ) : null}
+        {renderCategoryIcon(course.category?.icon ?? "")}
         <h4 className="whitespace-nowrap text-[#525252] font-[500] leading-[24px]">
           {categoryName}
         </h4>
