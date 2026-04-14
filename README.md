@@ -180,6 +180,4 @@
 
 ## Enrolled courses
 
-1. Enrolled Courses modal now uses a dedicated Framer Motion right-sidebar shell (overlay fade + slide-in/out), with an empty panel body . I will built currently
-   only for visual part emtpy case.
-2.
+1. Enrolled Courses now uses a dedicated animated right sidebar shell (overlay fade + right slide), and currently renders the empty-state panel layout for the next UI step.
