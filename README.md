@@ -30,6 +30,7 @@
 17. `See All` in Continue Learning and `Enrolled Courses` in the authenticated header now open the enrolled courses modal flow (guest users are redirected to login through protected action logic).
 18. Enrolled courses modal now has an empty state, enrolled list, summary, total price, and a non-browser confirmation UI for complete enrollment action.
 19. Hero section is now a 3-slide carousel with slide-based text, background image, indicators, and arrow states.
+20. Authorized Home dashboard Continue Learning now uses live `/courses/in-progress` data and shows up to 3 cards only when authenticated users actually have courses.
 
 ## Auth Modal Header Block
 
