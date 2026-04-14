@@ -1,5 +1,5 @@
-import THREE from "../../../../../assets/icons/courses/Icon Set=Three.svg";
-import ARROW_DOWN from "../../../../../assets/icons/courses/glyphs_arrow-bold.svg?react";
+import THREE from "../../../../../assets/icons/courses/schedule-steps/Icon Set=Three.svg";
+import ARROW_DOWN from "../../../../../assets/icons/courses/navigation/glyphs_arrow-bold.svg?react";
 import type { SessionTypeOption } from "../../../../../types/courseDetail";
 import SessionTypeCard from "../options/SessionTypeCard";
 

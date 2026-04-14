@@ -1,4 +1,4 @@
-import BACK_ARROW_ICON from "../../../assets/icons/authentification/weui_arrow-outlined.svg";
+import BACK_ARROW_ICON from "../../../../assets/icons/authentification/weui_arrow-outlined.svg";
 
 type AuthModalBackButtonProps = {
   onClick: () => void;

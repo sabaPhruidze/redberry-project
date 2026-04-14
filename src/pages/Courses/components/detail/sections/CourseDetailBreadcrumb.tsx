@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import RIGHT_ARROW from "../../../../../assets/icons/courses/right-arrow.svg";
+import RIGHT_ARROW from "../../../../../assets/icons/courses/navigation/right-arrow.svg";
 
 interface CourseDetailBreadcrumbProps {
   categoryName: string;

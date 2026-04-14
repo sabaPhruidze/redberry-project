@@ -1,11 +1,11 @@
 // Renders one catalog course card using real backend course fields.
 // Maps backend category icon slugs to existing local category icons.
 import { Link } from "react-router-dom";
-import BUSINESS_ICON from "../../../../../assets/icons/courses/Icon Set=Business.svg?react";
-import DATA_SCIENCE_ICON from "../../../../../assets/icons/courses/Icon Set=Data Science.svg?react";
-import DESIGN_ICON from "../../../../../assets/icons/courses/Icon Set=Design.svg?react";
-import DEVELOPMENT_ICON from "../../../../../assets/icons/courses/Icon Set=Development.svg?react";
-import MARKETING_ICON from "../../../../../assets/icons/courses/Icon Set=Marketing.svg?react";
+import BUSINESS_ICON from "../../../../../assets/icons/courses/category/Icon Set=Business.svg?react";
+import DATA_SCIENCE_ICON from "../../../../../assets/icons/courses/category/Icon Set=Data Science.svg?react";
+import DESIGN_ICON from "../../../../../assets/icons/courses/category/Icon Set=Design.svg?react";
+import DEVELOPMENT_ICON from "../../../../../assets/icons/courses/category/Icon Set=Development.svg?react";
+import MARKETING_ICON from "../../../../../assets/icons/courses/category/Icon Set=Marketing.svg?react";
 import HALF_STAR from "../../../../../assets/icons/home/Star (1).svg";
 import EMPTY_STAR from "../../../../../assets/icons/home/Star (2).svg";
 import STAR from "../../../../../assets/icons/home/Star.svg";

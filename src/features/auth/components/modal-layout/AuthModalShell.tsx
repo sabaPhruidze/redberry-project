@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode } from "react";
-import CLOSE_ICON from "../../../assets/icons/authentification/ic_round-close.svg";
+import CLOSE_ICON from "../../../../assets/icons/authentification/ic_round-close.svg";
 
 type AuthModalShellProps = {
   children: ReactNode;

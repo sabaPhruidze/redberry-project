@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { useLockBodyScroll } from "../../../hooks/use-lock-body-scroll";
-import { useUpdateProfile } from "../../profile/hooks/useUpdateProfile";
-import { syncAuthUser } from "../../profile/helpers/authUser";
-import type { ProfileStatus } from "../helpers/profileStatus";
-import { useProfileModalForm } from "../hooks/useProfileModalForm";
-import AuthModalShell from "./AuthModalShell";
+import { useLockBodyScroll } from "../../../../hooks/use-lock-body-scroll";
+import { useUpdateProfile } from "../../../profile/hooks/useUpdateProfile";
+import { syncAuthUser } from "../../../profile/helpers/authUser";
+import type { ProfileStatus } from "../../helpers/profileStatus";
+import { useProfileModalForm } from "../../hooks/useProfileModalForm";
+import AuthModalShell from "../modal-layout/AuthModalShell";
 import ProfileClosePrompt from "./ProfileClosePrompt";
 import ProfileFieldsLayout from "./ProfileFieldsLayout";
 import ProfileHeader from "./ProfileHeader";

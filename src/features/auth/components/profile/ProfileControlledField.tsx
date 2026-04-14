@@ -1,6 +1,6 @@
 import { Controller, type Control } from "react-hook-form";
-import type { ProfileFormInputValues } from "../helpers/profileModalForm";
-import type { ProfileFormValues } from "../schemas/profile.schema";
+import type { ProfileFormInputValues } from "../../helpers/profileModalForm";
+import type { ProfileFormValues } from "../../schemas/profile.schema";
 import ProfileSingleField from "./ProfileSingleField";
 
 type ProfileControlledFieldProps = {

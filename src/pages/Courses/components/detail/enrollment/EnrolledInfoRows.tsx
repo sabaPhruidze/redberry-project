@@ -1,7 +1,7 @@
-import CALENDAR_ICON from "../../../../../assets/icons/courses/boxicons_calendar.svg";
-import CLOCK_ICON from "../../../../../assets/icons/courses/tabler_clock-hour-3.svg";
-import DESKTOP_ICON from "../../../../../assets/icons/courses/Icon Set=Desktop.svg";
-import LOCATION_ICON from "../../../../../assets/icons/courses/location.svg";
+import CALENDAR_ICON from "../../../../../assets/icons/courses/meta/boxicons_calendar.svg";
+import CLOCK_ICON from "../../../../../assets/icons/courses/meta/tabler_clock-hour-3.svg";
+import DESKTOP_ICON from "../../../../../assets/icons/courses/session-mode/Icon Set=Desktop.svg";
+import LOCATION_ICON from "../../../../../assets/icons/courses/meta/location.svg";
 
 type EnrolledInfoRowsProps = {
   weeklyScheduleLabel: string;

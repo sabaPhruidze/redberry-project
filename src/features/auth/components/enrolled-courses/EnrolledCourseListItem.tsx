@@ -1,4 +1,4 @@
-import type { InProgressCourseItem } from "../../../types/courses";
+import type { InProgressCourseItem } from "../../../../types/courses";
 
 type EnrolledCourseListItemProps = {
   item: InProgressCourseItem;

@@ -2,7 +2,7 @@ import {
   getProfileStatusText,
   getProfileStatusTextClassName,
   type ProfileStatus,
-} from "../helpers/profileStatus";
+} from "../../helpers/profileStatus";
 
 type ProfileNameStatusProps = {
   username: string;

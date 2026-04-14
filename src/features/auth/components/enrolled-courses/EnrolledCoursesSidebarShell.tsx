@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { useLockBodyScroll } from "../../../hooks/use-lock-body-scroll";
+import { useLockBodyScroll } from "../../../../hooks/use-lock-body-scroll";
 
 type EnrolledCoursesSidebarShellProps = {
   onClose?: () => void;

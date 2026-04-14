@@ -1,8 +1,8 @@
 import { useState } from "react";
-import AuthModalFooter from "./AuthModalFooter";
-import AuthPasswordInputField from "./AuthPasswordInputField";
-import EYE_OPENED_ICON from "../../../assets/icons/authentification/Eye_opened.svg?react";
-import EYE_CLOSED_ICON from "../../../assets/icons/authentification/Eye_closed.svg?react";
+import AuthModalFooter from "../modal-layout/AuthModalFooter";
+import AuthPasswordInputField from "../form-fields/AuthPasswordInputField";
+import EYE_OPENED_ICON from "../../../../assets/icons/authentification/Eye_opened.svg?react";
+import EYE_CLOSED_ICON from "../../../../assets/icons/authentification/Eye_closed.svg?react";
 
 type AuthSignUpStepTwoSectionProps = {
   password: string;

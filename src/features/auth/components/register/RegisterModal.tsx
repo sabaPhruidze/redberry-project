@@ -1,12 +1,12 @@
-import { useSignUpModalState } from "../hooks/useSignUpModalState";
-import { useLockBodyScroll } from "../../../hooks/use-lock-body-scroll";
-import { useAuthModal } from "../hooks/useAuthModal";
-import AuthModalShell from "./AuthModalShell";
-import AuthModalBackButton from "./AuthModalBackButton";
-import AuthModalHeader from "./AuthModalHeader";
-import AuthStepIndicator from "./AuthStepIndicator";
+import { useSignUpModalState } from "../../hooks/useSignUpModalState";
+import { useLockBodyScroll } from "../../../../hooks/use-lock-body-scroll";
+import { useAuthModal } from "../../hooks/useAuthModal";
+import AuthModalShell from "../modal-layout/AuthModalShell";
+import AuthModalBackButton from "../modal-layout/AuthModalBackButton";
+import AuthModalHeader from "../modal-layout/AuthModalHeader";
+import AuthStepIndicator from "../modal-layout/AuthStepIndicator";
 import RegisterModalStepContent from "./RegisterModalStepContent";
-import { useRegisterModalForm } from "../hooks/useRegisterModalForm";
+import { useRegisterModalForm } from "../../hooks/useRegisterModalForm";
 
 type RegisterModalProps = {
   onClose?: () => void;

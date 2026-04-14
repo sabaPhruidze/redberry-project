@@ -1,6 +1,6 @@
 import UserAvatar from "./UserAvatar";
 import ProfileNameStatus from "./ProfileNameStatus";
-import type { ProfileStatus } from "../helpers/profileStatus";
+import type { ProfileStatus } from "../../helpers/profileStatus";
 
 type ProfileIdentityBlockProps = {
   username: string;

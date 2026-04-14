@@ -1,5 +1,5 @@
-import ARROW_RIGHT from "../../../../../assets/icons/courses/Icon Set=ArrowRight.svg?react";
-import WARNING from "../../../../../assets/icons/courses/warning.svg";
+import ARROW_RIGHT from "../../../../../assets/icons/courses/navigation/Icon Set=ArrowRight.svg?react";
+import WARNING from "../../../../../assets/icons/courses/status/warning.svg";
 
 interface EnrollmentAccessNoticeProps {
   variant: "auth" | "profile";

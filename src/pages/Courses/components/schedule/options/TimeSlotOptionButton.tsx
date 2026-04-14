@@ -1,7 +1,7 @@
 import type { TimeSlotOption } from "../../../../../types/courseDetail";
-import MOON from "../../../../../assets/icons/courses/Icon Set=Moon.svg?react";
-import CLOUD_SUN from "../../../../../assets/icons/courses/Icon Set=CloudSun.svg?react";
-import SUN from "../../../../../assets/icons/courses/Icon Set=Sun.svg?react";
+import MOON from "../../../../../assets/icons/courses/time-slot/Icon Set=Moon.svg?react";
+import CLOUD_SUN from "../../../../../assets/icons/courses/time-slot/Icon Set=CloudSun.svg?react";
+import SUN from "../../../../../assets/icons/courses/time-slot/Icon Set=Sun.svg?react";
 import {
   getTimeSlotDisplayRange,
   getTimeSlotDisplayTitle,

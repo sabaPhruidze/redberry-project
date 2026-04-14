@@ -1,5 +1,5 @@
-import AuthFieldLabel from "./AuthFieldLabel";
-import DOWNLOAD_ICON from "../../../assets/icons/authentification/donwload_icon.svg";
+import AuthFieldLabel from "../form-fields/AuthFieldLabel";
+import DOWNLOAD_ICON from "../../../../assets/icons/authentification/donwload_icon.svg";
 
 const ProfileUploadAvatarBlock = () => {
   return (

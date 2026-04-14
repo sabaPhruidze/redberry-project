@@ -1,11 +1,11 @@
 import type { BaseSyntheticEvent } from "react";
 import { Controller, type Control, type FieldErrors } from "react-hook-form";
-import AuthEmailInputField from "./AuthEmailInputField";
-import AuthPasswordInputField from "./AuthPasswordInputField";
-import AuthModalFooter from "./AuthModalFooter";
-import EYE_OPENED_ICON from "../../../assets/icons/authentification/Eye_opened.svg?react";
-import EYE_CLOSED_ICON from "../../../assets/icons/authentification/Eye_closed.svg?react";
-import type { LoginFormValues } from "../schemas/login.schema";
+import AuthEmailInputField from "../form-fields/AuthEmailInputField";
+import AuthPasswordInputField from "../form-fields/AuthPasswordInputField";
+import AuthModalFooter from "../modal-layout/AuthModalFooter";
+import EYE_OPENED_ICON from "../../../../assets/icons/authentification/Eye_opened.svg?react";
+import EYE_CLOSED_ICON from "../../../../assets/icons/authentification/Eye_closed.svg?react";
+import type { LoginFormValues } from "../../schemas/login.schema";
 
 type LoginModalFormContentProps = {
   control: Control<LoginFormValues>;

@@ -1,4 +1,4 @@
-import WARNING from "../../../../../assets/icons/courses/warning.svg";
+import WARNING from "../../../../../assets/icons/courses/status/warning.svg";
 
 interface SessionTypeAvailabilityProps {
   isUnavailable: boolean;

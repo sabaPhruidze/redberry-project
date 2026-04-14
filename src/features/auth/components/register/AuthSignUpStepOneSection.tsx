@@ -1,5 +1,5 @@
-import AuthModalFooter from "./AuthModalFooter";
-import AuthEmailInputField from "./AuthEmailInputField";
+import AuthModalFooter from "../modal-layout/AuthModalFooter";
+import AuthEmailInputField from "../form-fields/AuthEmailInputField";
 
 type AuthSignUpStepOneSectionProps = {
   email: string;

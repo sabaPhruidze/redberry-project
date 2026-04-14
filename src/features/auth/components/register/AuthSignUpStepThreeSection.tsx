@@ -1,6 +1,6 @@
-import AuthModalFooter from "./AuthModalFooter";
-import AuthPasswordInputField from "./AuthPasswordInputField";
-import AuthUploadAvatarField from "./AuthUploadAvatarField";
+import AuthModalFooter from "../modal-layout/AuthModalFooter";
+import AuthPasswordInputField from "../form-fields/AuthPasswordInputField";
+import AuthUploadAvatarField from "../form-fields/AuthUploadAvatarField";
 
 type AuthSignUpStepThreeSectionProps = {
   username: string;

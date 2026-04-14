@@ -1,5 +1,5 @@
 import type { DragEvent } from "react";
-import DOWNLOAD_ICON from "../../../assets/icons/authentification/donwload_icon.svg";
+import DOWNLOAD_ICON from "../../../../assets/icons/authentification/donwload_icon.svg";
 
 type ProfileAvatarUploadPromptProps = {
   disabled: boolean;

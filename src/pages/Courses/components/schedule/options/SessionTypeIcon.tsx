@@ -1,6 +1,6 @@
-import DESKTOP from "../../../../../assets/icons/courses/Icon Set=Desktop.svg?react";
-import USERS from "../../../../../assets/icons/courses/Icon Set=Users.svg?react";
-import HYBRID from "../../../../../assets/icons/courses/Icon Set=Intersect.svg?react";
+import DESKTOP from "../../../../../assets/icons/courses/session-mode/Icon Set=Desktop.svg?react";
+import USERS from "../../../../../assets/icons/courses/session-mode/Icon Set=Users.svg?react";
+import HYBRID from "../../../../../assets/icons/courses/session-mode/Icon Set=Intersect.svg?react";
 
 interface SessionTypeIconProps {
   kind: "online" | "hybrid" | "in-person";

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useLockBodyScroll } from "../../../hooks/use-lock-body-scroll";
-import { useAuthModal } from "../hooks/useAuthModal";
-import AuthModalShell from "./AuthModalShell";
-import AuthModalHeader from "./AuthModalHeader";
+import { useLockBodyScroll } from "../../../../hooks/use-lock-body-scroll";
+import { useAuthModal } from "../../hooks/useAuthModal";
+import AuthModalShell from "../modal-layout/AuthModalShell";
+import AuthModalHeader from "../modal-layout/AuthModalHeader";
 import LoginModalFormContent from "./LoginModalFormContent";
-import { useLoginModalForm } from "../hooks/useLoginModalForm";
+import { useLoginModalForm } from "../../hooks/useLoginModalForm";
 
 type LoginModalProps = {
   onClose?: () => void;

@@ -2,7 +2,7 @@ import type { FieldErrors } from "react-hook-form";
 import AuthSignUpStepOneSection from "./AuthSignUpStepOneSection";
 import AuthSignUpStepTwoSection from "./AuthSignUpStepTwoSection";
 import AuthSignUpStepThreeSection from "./AuthSignUpStepThreeSection";
-import type { RegisterFormValues } from "../schemas/register.schema";
+import type { RegisterFormValues } from "../../schemas/register.schema";
 
 type RegisterModalStepContentProps = {
   currentStep: 1 | 2 | 3;

@@ -1,7 +1,7 @@
 // Renders a custom catalog sort dropdown matching the Figma trigger and menu.
 // Keeps simple keyboard and outside-click close behavior for usability.
 import { useEffect, useMemo, useRef, useState } from "react";
-import ARROW_DOWN from "../../../../../assets/icons/courses/glyphs_arrow-bold.svg";
+import ARROW_DOWN from "../../../../../assets/icons/courses/navigation/glyphs_arrow-bold.svg";
 import {
   CATALOG_SORT_OPTIONS,
   type CatalogSortValue,

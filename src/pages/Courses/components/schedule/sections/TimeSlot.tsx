@@ -1,5 +1,5 @@
-import ARROW_DOWN from "../../../../../assets/icons/courses/glyphs_arrow-bold.svg?react";
-import TWO from "../../../../../assets/icons/courses/Icon Set=Two.svg";
+import ARROW_DOWN from "../../../../../assets/icons/courses/navigation/glyphs_arrow-bold.svg?react";
+import TWO from "../../../../../assets/icons/courses/schedule-steps/Icon Set=Two.svg";
 import type { TimeSlotOption } from "../../../../../types/courseDetail";
 import TimeSlotOptionButton from "../options/TimeSlotOptionButton";
 

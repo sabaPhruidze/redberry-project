@@ -1,4 +1,4 @@
-import LOCATION from "../../../../../assets/icons/courses/location.svg?react";
+import LOCATION from "../../../../../assets/icons/courses/meta/location.svg?react";
 import type { SessionTypeOption } from "../../../../../types/courseDetail";
 import SessionTypeAvailability from "./SessionTypeAvailability";
 import { formatPriceModifier, getSessionTypeKind, getSeatsStatusText } from "../utils/sessionTypeOptionUtils";

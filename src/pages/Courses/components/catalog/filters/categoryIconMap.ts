@@ -1,9 +1,9 @@
 import type { ComponentType, SVGProps } from "react";
-import BUSINESS_ICON from "../../../../../assets/icons/courses/Icon Set=Business.svg?react";
-import DATA_SCIENCE_ICON from "../../../../../assets/icons/courses/Icon Set=Data Science.svg?react";
-import DESIGN_ICON from "../../../../../assets/icons/courses/Icon Set=Design.svg?react";
-import DEVELOPMENT_ICON from "../../../../../assets/icons/courses/Icon Set=Development.svg?react";
-import MARKETING_ICON from "../../../../../assets/icons/courses/Icon Set=Marketing.svg?react";
+import BUSINESS_ICON from "../../../../../assets/icons/courses/category/Icon Set=Business.svg?react";
+import DATA_SCIENCE_ICON from "../../../../../assets/icons/courses/category/Icon Set=Data Science.svg?react";
+import DESIGN_ICON from "../../../../../assets/icons/courses/category/Icon Set=Design.svg?react";
+import DEVELOPMENT_ICON from "../../../../../assets/icons/courses/category/Icon Set=Development.svg?react";
+import MARKETING_ICON from "../../../../../assets/icons/courses/category/Icon Set=Marketing.svg?react";
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 

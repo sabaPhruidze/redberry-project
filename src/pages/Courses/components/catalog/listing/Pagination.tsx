@@ -1,6 +1,6 @@
 // Renders catalog pagination controls from backend metadata.
 // Keeps the existing pagination look while using real page values.
-import ARROW_ICON from "../../../../../assets/icons/courses/Icon Set=ArrowRight.svg?react";
+import ARROW_ICON from "../../../../../assets/icons/courses/navigation/Icon Set=ArrowRight.svg?react";
 
 type PaginationProps = {
   currentPage: number;

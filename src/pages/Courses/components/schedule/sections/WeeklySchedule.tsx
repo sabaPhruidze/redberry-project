@@ -1,5 +1,5 @@
-import ONE from "../../../../../assets/icons/courses/Icon Set=One.svg";
-import ARROW_DOWN from "../../../../../assets/icons/courses/glyphs_arrow-bold.svg?react";
+import ONE from "../../../../../assets/icons/courses/schedule-steps/Icon Set=One.svg";
+import ARROW_DOWN from "../../../../../assets/icons/courses/navigation/glyphs_arrow-bold.svg?react";
 import type { WeeklyScheduleOption } from "../../../../../types/courseDetail";
 import WeeklyScheduleOptionButton from "../options/WeeklyScheduleOptionButton";
 

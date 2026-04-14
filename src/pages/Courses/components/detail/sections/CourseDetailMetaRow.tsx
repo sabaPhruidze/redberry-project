@@ -1,8 +1,8 @@
 import HALF_STAR from "../../../../../assets/icons/home/Star (1).svg";
 import EMPTY_STAR from "../../../../../assets/icons/home/Star (2).svg";
 import STAR from "../../../../../assets/icons/home/Star.svg";
-import CALENDAR from "../../../../../assets/icons/courses/boxicons_calendar.svg";
-import TIME from "../../../../../assets/icons/courses/tabler_clock-hour-3.svg";
+import CALENDAR from "../../../../../assets/icons/courses/meta/boxicons_calendar.svg";
+import TIME from "../../../../../assets/icons/courses/meta/tabler_clock-hour-3.svg";
 import type { CourseReview } from "../../../../../types/courseDetail";
 import CourseDetailCategoryBadge from "./CourseDetailCategoryBadge";
 

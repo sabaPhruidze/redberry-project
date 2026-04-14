@@ -1,4 +1,4 @@
-import ProfileAvatar from "./ProfileAvatar";
+import ProfileAvatar from "../profile/ProfileAvatar";
 
 type AuthUploadAvatarFieldProps = {
   onFileSelect?: (file: File | null) => void;

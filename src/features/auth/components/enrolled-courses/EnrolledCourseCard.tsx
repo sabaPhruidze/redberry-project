@@ -1,12 +1,12 @@
 // Renders one enrolled course card inside the sidebar using live enrollment data.
-import CALENDAR_ICON from "../../../assets/icons/courses/boxicons_calendar.svg";
-import CLOCK_ICON from "../../../assets/icons/courses/tabler_clock-hour-3.svg";
-import LOCATION_ICON from "../../../assets/icons/courses/location.svg";
-import USERS_ICON from "../../../assets/icons/courses/Icon Set=Users.svg";
-import HALF_STAR_ICON from "../../../assets/icons/home/Star (1).svg";
-import EMPTY_STAR_ICON from "../../../assets/icons/home/Star (2).svg";
-import STAR_ICON from "../../../assets/icons/home/Star.svg";
-import type { EnrollmentItem } from "../../../types/enrollments";
+import CALENDAR_ICON from "../../../../assets/icons/courses/meta/boxicons_calendar.svg";
+import CLOCK_ICON from "../../../../assets/icons/courses/meta/tabler_clock-hour-3.svg";
+import LOCATION_ICON from "../../../../assets/icons/courses/meta/location.svg";
+import USERS_ICON from "../../../../assets/icons/courses/session-mode/Icon Set=Users.svg";
+import HALF_STAR_ICON from "../../../../assets/icons/home/Star (1).svg";
+import EMPTY_STAR_ICON from "../../../../assets/icons/home/Star (2).svg";
+import STAR_ICON from "../../../../assets/icons/home/Star.svg";
+import type { EnrollmentItem } from "../../../../types/enrollments";
 import EnrolledCourseProgress from "./EnrolledCourseProgress";
 type EnrolledCourseCardProps = {
   item: EnrollmentItem;
