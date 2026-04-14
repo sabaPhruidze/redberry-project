@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import { AnimatePresence } from "framer-motion";
 import Loader from "./components/shared/Loader";
 import LoginModal from "./features/auth/components/LoginModal";
 import RegisterModal from "./features/auth/components/RegisterModal";
@@ -16,6 +17,7 @@ const CourseDetailPage = lazy(() => import("./pages/Courses/CourseDetailPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const AppContent = () => {
+  // Keeps auth modal open/close triggers intact while enabling enrolled sidebar exit animation.
   const {
     isLoginModalOpen,
     isRegisterModalOpen,
@@ -42,9 +44,11 @@ const AppContent = () => {
 
       {isLoginModalOpen && <LoginModal onClose={closeLoginModal} />}
       {isRegisterModalOpen && <RegisterModal onClose={closeRegisterModal} />}
-      {isEnrolledCoursesModalOpen && (
-        <EnrolledCoursesModal onClose={closeEnrolledCoursesModal} />
-      )}
+      <AnimatePresence>
+        {isEnrolledCoursesModalOpen ? (
+          <EnrolledCoursesModal onClose={closeEnrolledCoursesModal} />
+        ) : null}
+      </AnimatePresence>
       {isProfileModalOpen && <ProfileModal onClose={closeProfileModal} />}
     </>
   );

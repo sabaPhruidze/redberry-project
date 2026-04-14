@@ -177,3 +177,9 @@
 
 1. refactored pages => home => components and added 3 folder
 2. refactored pages => courses => components and added 3 folder and sub folders as well
+
+## Enrolled courses
+
+1. Enrolled Courses modal now uses a dedicated Framer Motion right-sidebar shell (overlay fade + slide-in/out), with an empty panel body . I will built currently
+   only for visual part emtpy case.
+2.
