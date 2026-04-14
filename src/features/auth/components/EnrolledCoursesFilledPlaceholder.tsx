@@ -76,7 +76,7 @@ const EnrolledCoursesFilledPlaceholder = () => {
       </div>
       <div className="w-full h-[48px] flex flex-row gap-[20px] items-center justify-between">
         <div className="flex flex-col w-[446px] h-[39px] gap-[8px]">
-          <p className="text-[#141414] font-[500] leading-[24px]">
+          <p className="text-[#141414] h-[16px] font-[500] leading-[100%]">
             65% Complete
           </p>
           <EnrolledCourseProgress value={65} />
