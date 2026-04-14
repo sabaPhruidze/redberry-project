@@ -1,6 +1,6 @@
 // Renders category filter chips and applies selected highlight colors.
 // Keeps the same layout while using existing checkbox selection state.
-import useCategories from "../../../../../api/hooks/useCategories";
+import useCategories from "../../../../../api/hooks/courses/useCategories";
 import { getCategoryIconComponent } from "./categoryIconMap";
 
 type CategoriesProps = {

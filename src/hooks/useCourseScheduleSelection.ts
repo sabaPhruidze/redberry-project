@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
-import useCourseSessionTypes from "../api/hooks/useCourseSessionTypes";
-import useCourseTimeSlots from "../api/hooks/useCourseTimeSlots";
+import useCourseSessionTypes from "../api/hooks/course-detail/useCourseSessionTypes";
+import useCourseTimeSlots from "../api/hooks/course-detail/useCourseTimeSlots";
 import type { WeeklyScheduleOption } from "../types/courseDetail";
 
 interface UseCourseScheduleSelectionParams {

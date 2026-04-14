@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
-import useCompleteEnrollment from "../../../../../api/hooks/useCompleteEnrollment";
-import useCreateEnrollment from "../../../../../api/hooks/useCreateEnrollment";
-import useCreateCourseReview from "../../../../../api/hooks/useCreateCourseReview";
-import useDeleteEnrollment from "../../../../../api/hooks/useDeleteEnrollment";
-import useEnrollments from "../../../../../api/hooks/useEnrollments";
+import useCompleteEnrollment from "../../../../../api/hooks/enrollments/useCompleteEnrollment";
+import useCreateEnrollment from "../../../../../api/hooks/enrollments/useCreateEnrollment";
+import useCreateCourseReview from "../../../../../api/hooks/course-detail/useCreateCourseReview";
+import useDeleteEnrollment from "../../../../../api/hooks/enrollments/useDeleteEnrollment";
+import useEnrollments from "../../../../../api/hooks/enrollments/useEnrollments";
 import useCourseDetailAccordion from "../../../../../hooks/useCourseDetailAccordion";
 import useCourseScheduleSelection from "../../../../../hooks/useCourseScheduleSelection";
-import useCourseWeeklySchedules from "../../../../../api/hooks/useCourseWeeklySchedules";
+import useCourseWeeklySchedules from "../../../../../api/hooks/course-detail/useCourseWeeklySchedules";
 import { useAuthModal } from "../../../../../features/auth/hooks/useAuthModal";
 import {
   getAuthUser,
@@ -18,20 +18,20 @@ import type {
   CreateEnrollmentConflictError,
   CreateEnrollmentRequest,
 } from "../../../../../types/enrollments";
-import CourseCompletedModal from "../enrollment/CourseCompletedModal";
-import CompletedRatingSection from "../enrollment/CompletedRatingSection";
-import CompletedStatusBadge from "../enrollment/CompletedStatusBadge";
-import EnrolledInfoRows from "../enrollment/EnrolledInfoRows";
-import EnrolledProgressActions from "../enrollment/EnrolledProgressActions";
-import EnrollmentConfirmedModal from "../enrollment/EnrollmentConfirmedModal";
-import EnrollmentConflictModal from "../enrollment/EnrollmentConflictModal";
-import EnrolledStatusBadge from "../enrollment/EnrolledStatusBadge";
-import EnrollmentAccessNotice from "../enrollment/EnrollmentAccessNotice";
+import CourseCompletedModal from "../enrollment/modals/CourseCompletedModal";
+import CompletedRatingSection from "../enrollment/progress/CompletedRatingSection";
+import CompletedStatusBadge from "../enrollment/status/CompletedStatusBadge";
+import EnrolledInfoRows from "../enrollment/info/EnrolledInfoRows";
+import EnrolledProgressActions from "../enrollment/progress/EnrolledProgressActions";
+import EnrollmentConfirmedModal from "../enrollment/modals/EnrollmentConfirmedModal";
+import EnrollmentConflictModal from "../enrollment/modals/EnrollmentConflictModal";
+import EnrolledStatusBadge from "../enrollment/status/EnrolledStatusBadge";
+import EnrollmentAccessNotice from "../enrollment/info/EnrollmentAccessNotice";
 import { getDisplaySessionTypes } from "../../schedule/utils/sessionTypeOptionUtils";
 import SessionType from "../../schedule/sections/SessionType";
 import TimeSlot from "../../schedule/sections/TimeSlot";
 import { getDisplayTimeSlots } from "../../schedule/utils/timeSlotOptionUtils";
-import TotalPrice from "../enrollment/TotalPrice";
+import TotalPrice from "../enrollment/info/TotalPrice";
 import WeeklySchedule from "../../schedule/sections/WeeklySchedule";
 import { getDisplayWeeklySchedules } from "../../schedule/utils/weeklyScheduleOptionUtils";
 

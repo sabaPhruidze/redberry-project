@@ -1,7 +1,7 @@
 // Renders topic filter chips and applies selected highlight colors.
 // Loads topics by selected categories and keeps topic selection state valid.
 import { useEffect } from "react";
-import useTopics from "../../../../../api/hooks/useTopics";
+import useTopics from "../../../../../api/hooks/courses/useTopics";
 
 type TopicsProps = {
   selectedIds: number[];

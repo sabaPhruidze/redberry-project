@@ -1,7 +1,7 @@
 // Connects catalog list, sorting, and pagination using real backend course data.
 // Applies real-time filters before sorting and client-side pagination.
 import { useMemo, useState } from "react";
-import useCourses from "../../../../../api/hooks/useCourses";
+import useCourses from "../../../../../api/hooks/courses/useCourses";
 import CardsMiddle from "./CardsMiddle";
 import CardsTop from "./CardsTop";
 import Pagination from "./Pagination";

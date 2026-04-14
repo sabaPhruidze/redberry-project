@@ -4,7 +4,7 @@ import EnrolledCoursesEmptyState from "./EnrolledCoursesEmptyState";
 import EnrolledCourseCard from "./EnrolledCourseCard";
 import EnrolledCoursesPanelHeader from "./EnrolledCoursesPanelHeader";
 import EnrolledCoursesSidebarShell from "./EnrolledCoursesSidebarShell";
-import useEnrollments from "../../../../api/hooks/useEnrollments";
+import useEnrollments from "../../../../api/hooks/enrollments/useEnrollments";
 
 type EnrolledCoursesModalProps = {
   onClose?: () => void;

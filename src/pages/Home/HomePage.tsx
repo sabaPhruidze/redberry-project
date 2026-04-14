@@ -1,5 +1,5 @@
 import MainLayout from "../../layouts/MainLayout";
-import useInProgressCourses from "../../api/hooks/useInProgressCourses";
+import useInProgressCourses from "../../api/hooks/courses/useInProgressCourses";
 import ContinueLearning from "./components/continue-learning/ContinueLearning";
 import HeroSection from "./components/hero/HeroSection";
 import StartLearning from "./components/start-learning/StartLearning";

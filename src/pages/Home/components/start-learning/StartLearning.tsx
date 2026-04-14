@@ -1,4 +1,4 @@
-import useFeaturedCourses from "../../../../api/hooks/useFeaturedCourses";
+import useFeaturedCourses from "../../../../api/hooks/courses/useFeaturedCourses";
 import StartLearningCard from "./StartLearningCard";
 
 const StartLearning = () => {

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
-import useLogin from "../../../api/hooks/useLogin";
+import useLogin from "../../../api/hooks/auth/useLogin";
 import { inProgressCoursesQueryKey } from "../../../api/queryKeys";
 import {
   loginSchema,

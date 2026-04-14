@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import STAR3 from "../../assets/icons/header/three_star.svg?react";
 import OPENED_BOOK from "../../assets/icons/header/opened_book.svg";
-import UserAvatar from "../../features/auth/components/profile/UserAvatar";
+import UserAvatar from "../../features/auth/components/profile/avatar/UserAvatar";
 import type { ProfileStatus } from "../../features/auth/helpers/profileStatus";
 
 type HeaderAuthenticatedActionsProps = {

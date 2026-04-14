@@ -1,6 +1,6 @@
 // Renders instructor filter chips and applies selected highlight colors.
 // Keeps existing list structure while using current checkbox selection state.
-import useInstructors from "../../../../../api/hooks/useInstructors";
+import useInstructors from "../../../../../api/hooks/courses/useInstructors";
 
 type InstructorProps = {
   selectedIds: number[];

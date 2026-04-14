@@ -2,7 +2,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryClient } from "@tanstack/react-query";
-import useRegister from "../../../api/hooks/useRegister";
+import useRegister from "../../../api/hooks/auth/useRegister";
 import { inProgressCoursesQueryKey } from "../../../api/queryKeys";
 import {
   registerSchema,

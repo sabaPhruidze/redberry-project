@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import MainLayout from "../../layouts/MainLayout";
-import useCourseDetail from "../../api/hooks/useCourseDetail";
+import useCourseDetail from "../../api/hooks/course-detail/useCourseDetail";
 import CourseDetailLeft from "./components/detail/layout/CourseDetailLeft";
 import CourseDetailRight from "./components/detail/layout/CourseDetailRight";
 const CourseDetailPage = () => {

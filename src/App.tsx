@@ -5,7 +5,7 @@ import Loader from "./components/shared/Loader";
 import LoginModal from "./features/auth/components/login/LoginModal";
 import RegisterModal from "./features/auth/components/register/RegisterModal";
 import EnrolledCoursesModal from "./features/auth/components/enrolled-courses/EnrolledCoursesModal";
-import ProfileModal from "./features/auth/components/profile/ProfileModal";
+import ProfileModal from "./features/auth/components/profile/modal/ProfileModal";
 import { AuthModalProvider } from "./features/auth/context/AuthModalContext";
 import { useAuthModal } from "./features/auth/hooks/useAuthModal";
 
