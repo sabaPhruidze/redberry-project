@@ -24,6 +24,9 @@ const getRatingIcon = (avgRating: number) => {
 const CatalogCourseCard = ({ course }: CatalogCourseCardProps) => {
   const categoryName = course.category?.name ?? "";
   const CategoryIcon = getCategoryIconComponent(course.category?.icon ?? "");
+  const ratingValue = Number(course.avgRating);
+  const displayRating = Number.isFinite(ratingValue) ? ratingValue.toFixed(1) : "0";
+  const ratingNumber = Number(displayRating);
 
   return (
     <Link
@@ -36,9 +39,9 @@ const CatalogCourseCard = ({ course }: CatalogCourseCardProps) => {
           {course.instructor?.name ?? ""} | {course.durationWeeks ?? ""} Weeks
         </p>
         <div className="flex flex-row items-center gap-[4px]">
-          <img src={getRatingIcon(course.avgRating)} alt="star icon" className="w-[18px] h-[18px]" />
+          <img src={getRatingIcon(ratingNumber)} alt="star icon" className="w-[18px] h-[18px]" />
           <p className="font-[500] text-[14px] leading-[100%] text-redberry-text-gray-light">
-            {course.avgRating}
+            {displayRating}
           </p>
         </div>
       </div>

@@ -1,17 +1,32 @@
 import CHECK_ICON from "../../../../../assets/icons/profile/Icon Set=Check.svg?react";
+import RETAKE_ICON from "../../../../../assets/icons/Icon Set=Retake.svg?react";
 
 type EnrolledProgressActionsProps = {
   progress?: number | null;
+  isCompleted?: boolean;
+  isActionPending?: boolean;
+  onCompleteCourse?: () => void;
+  onRetakeCourse?: () => void;
 };
 
-const EnrolledProgressActions = ({ progress }: EnrolledProgressActionsProps) => {
+const EnrolledProgressActions = ({
+  progress,
+  isCompleted = false,
+  isActionPending = false,
+  onCompleteCourse,
+  onRetakeCourse,
+}: EnrolledProgressActionsProps) => {
   const numericProgress = Number(progress);
   const clampedProgress = Number.isFinite(numericProgress)
     ? Math.min(100, Math.max(0, numericProgress))
     : 0;
+  const displayProgress = isCompleted ? 100 : clampedProgress;
   const progressTextValue = Number.isInteger(clampedProgress)
-    ? clampedProgress.toString()
-    : clampedProgress.toFixed(1).replace(/\.0$/, "");
+    ? displayProgress.toString()
+    : displayProgress.toFixed(1).replace(/\.0$/, "");
+  const actionText = isCompleted ? "Retake Course" : "Complete Course";
+  const ActionIcon = isCompleted ? RETAKE_ICON : CHECK_ICON;
+  const handleAction = isCompleted ? onRetakeCourse : onCompleteCourse;
 
   return (
     <div className="flex w-[473px] flex-col gap-[40px]">
@@ -22,18 +37,20 @@ const EnrolledProgressActions = ({ progress }: EnrolledProgressActionsProps) => 
         <div className="h-[23.4px] w-[473px] overflow-hidden rounded-[30px] bg-[#DDDBFA]">
           <div
             className="h-[23.4px] rounded-[30px] bg-[#4F46E5]"
-            style={{ width: `${clampedProgress}%` }}
+            style={{ width: `${displayProgress}%` }}
           />
         </div>
       </div>
       <button
         type="button"
+        onClick={handleAction}
+        disabled={isActionPending}
         className="w-[full] h-[58px] flex w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#4F46E5] px-[25px] py-[17px] text-white"
       >
-        <span className="inline-flex h-[24px] w-[167px] items-center justify-center text-center text-[20px] font-[500] leading-[100%] tracking-[0]">
-          Complete Course
+        <span className="inline-flex h-[24px] items-center justify-center text-center text-[20px] font-[500] leading-[100%] tracking-[0]">
+          {actionText}
         </span>
-        <CHECK_ICON
+        <ActionIcon
           aria-hidden="true"
           focusable="false"
           className="h-[24px] w-[24px] [&_path]:!fill-white [&_path]:!stroke-white"

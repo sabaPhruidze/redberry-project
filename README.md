@@ -166,7 +166,13 @@
 10. Breadcrumb receives relevant category and display's it on the head of the left part also when home or browse clicked it will move on relevant page
 11. implementing enrollment backend GET/POST/PATCH/DELETE
 12. Now implemented post on enroll now button but Currently I will write only static text and after creating the design I retrieve data through GET method
-13.
+13. retrieves data correctly and dispays it
+14. correctly added the rating block and retake button for the completed state.
+15.
+
+After Enroll Now succeeds, the right panel switches from the schedule selection flow to the enrolled state and shows the selected weekly schedule, time slot, session type, optional location, and backend-driven progress in the existing design.
+
+After Complete Course succeeds and the backend progress becomes 100, the same panel switches to the completed state and shows the Completed badge, full progress, the Retake Course action, and the one-time rating section.
 
 ## IMPORTANT CHANGES
 

@@ -55,6 +55,7 @@ const CourseDetailPage = () => {
               courseId={course.id}
               courseBasePrice={course.basePrice}
               courseEnrollment={course.enrollment}
+              courseIsRated={course.isRated}
             />
           </div>
         ) : null}

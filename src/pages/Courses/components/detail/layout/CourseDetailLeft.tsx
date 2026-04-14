@@ -27,6 +27,7 @@ const CourseDetailLeft = ({ course }: CourseDetailLeftProps) => {
           durationWeeks={course.durationWeeks}
           categoryName={course.category.name}
           categoryIcon={course.category.icon}
+          reviews={course.reviews}
         />
         <div>
           <CourseInstructorChip

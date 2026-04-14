@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import useCompleteEnrollment from "../../../../../api/hooks/useCompleteEnrollment";
 import useCreateEnrollment from "../../../../../api/hooks/useCreateEnrollment";
 import useEnrollments from "../../../../../api/hooks/useEnrollments";
 import useCourseDetailAccordion from "../../../../../hooks/useCourseDetailAccordion";
@@ -15,6 +16,8 @@ import type {
   CreateEnrollmentConflictError,
   CreateEnrollmentRequest,
 } from "../../../../../types/enrollments";
+import CompletedRatingSection from "../enrollment/CompletedRatingSection";
+import CompletedStatusBadge from "../enrollment/CompletedStatusBadge";
 import EnrolledInfoRows from "../enrollment/EnrolledInfoRows";
 import EnrolledProgressActions from "../enrollment/EnrolledProgressActions";
 import EnrollmentConflictModal from "../enrollment/EnrollmentConflictModal";
@@ -32,6 +35,7 @@ interface CourseDetailRightProps {
   courseId: number;
   courseBasePrice: number;
   courseEnrollment?: CourseEnrollment;
+  courseIsRated?: boolean;
 }
 
 type EnrollmentConflictState = {
@@ -45,6 +49,7 @@ const CourseDetailRight = ({
   courseId,
   courseBasePrice,
   courseEnrollment,
+  courseIsRated = false,
 }: CourseDetailRightProps) => {
   const authUser = getAuthUser();
   const isAuthenticated =
@@ -54,6 +59,8 @@ const CourseDetailRight = ({
   const hasCompleteAccess = isAuthenticated && isProfileComplete;
   const [conflictState, setConflictState] =
     useState<EnrollmentConflictState | null>(null);
+  const [isRatingCardVisible, setIsRatingCardVisible] = useState(false);
+  const completeEnrollmentMutation = useCompleteEnrollment();
   const createEnrollmentMutation = useCreateEnrollment();
   const { data: enrollmentsData } = useEnrollments(isAuthenticated);
   const { data: weeklySchedulesResponse } = useCourseWeeklySchedules(courseId);
@@ -84,11 +91,16 @@ const CourseDetailRight = ({
 
   const matchedEnrollment = useMemo(
     () =>
-      courseEnrollment ??
-      enrollmentsData?.find((item) => item.course.id === courseId),
+      enrollmentsData?.find((item) => item.course.id === courseId) ??
+      courseEnrollment,
     [courseEnrollment, enrollmentsData, courseId],
   );
   const enrollmentId = matchedEnrollment?.id ?? null;
+  const numericProgress = Number(matchedEnrollment?.progress);
+  const enrollmentProgress = Number.isFinite(numericProgress)
+    ? Math.min(100, Math.max(0, numericProgress))
+    : 0;
+  const isCourseCompleted = enrollmentProgress >= 100;
   const isEnrolled = enrollmentId != null;
   const selectedCourseScheduleId =
     selection.selectedSessionType?.courseScheduleId;
@@ -160,12 +172,37 @@ const CourseDetailRight = ({
     enrolledSchedule?.sessionType.location?.trim() ||
     undefined;
 
+  useEffect(() => {
+    if (isCourseCompleted) {
+      setIsRatingCardVisible(true);
+      return;
+    }
+
+    setIsRatingCardVisible(false);
+  }, [courseId, isCourseCompleted, courseIsRated]);
+
+  const handleCompleteCourse = () => {
+    if (
+      enrollmentId == null ||
+      isCourseCompleted ||
+      completeEnrollmentMutation.isPending
+    ) {
+      return;
+    }
+
+    completeEnrollmentMutation.mutate(enrollmentId);
+  };
+
+  const handleRetakeCourse = () => {
+    console.log("Retake flow is not implemented yet.");
+  };
+
   return (
     <div className="mt-[130px] w-[530px] flex flex-col gap-[32px]">
       {isEnrolled ? (
         <div className="flex w-[473px] flex-col gap-[48px]">
           <div className="flex w-[473px] flex-col gap-[22px]">
-            <EnrolledStatusBadge />
+            {isCourseCompleted ? <CompletedStatusBadge /> : <EnrolledStatusBadge />}
             <EnrolledInfoRows
               weeklyScheduleLabel={enrolledSchedule?.weeklySchedule.label ?? ""}
               timeSlotLabel={enrolledSchedule?.timeSlot.label ?? ""}
@@ -173,7 +210,21 @@ const CourseDetailRight = ({
               locationLabel={enrolledLocation}
             />
           </div>
-          <EnrolledProgressActions progress={matchedEnrollment?.progress} />
+          <div className="flex w-[473px] flex-col gap-[22px]">
+            <EnrolledProgressActions
+              progress={enrollmentProgress}
+              isCompleted={isCourseCompleted}
+              isActionPending={completeEnrollmentMutation.isPending}
+              onCompleteCourse={handleCompleteCourse}
+              onRetakeCourse={handleRetakeCourse}
+            />
+            {isCourseCompleted && isRatingCardVisible ? (
+              <CompletedRatingSection
+                onClose={() => setIsRatingCardVisible(false)}
+                isRated={courseIsRated}
+              />
+            ) : null}
+          </div>
         </div>
       ) : (
         <>
