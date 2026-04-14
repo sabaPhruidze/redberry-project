@@ -18,10 +18,12 @@ import type {
   CreateEnrollmentConflictError,
   CreateEnrollmentRequest,
 } from "../../../../../types/enrollments";
+import CourseCompletedModal from "../enrollment/CourseCompletedModal";
 import CompletedRatingSection from "../enrollment/CompletedRatingSection";
 import CompletedStatusBadge from "../enrollment/CompletedStatusBadge";
 import EnrolledInfoRows from "../enrollment/EnrolledInfoRows";
 import EnrolledProgressActions from "../enrollment/EnrolledProgressActions";
+import EnrollmentConfirmedModal from "../enrollment/EnrollmentConfirmedModal";
 import EnrollmentConflictModal from "../enrollment/EnrollmentConflictModal";
 import EnrolledStatusBadge from "../enrollment/EnrolledStatusBadge";
 import EnrollmentAccessNotice from "../enrollment/EnrollmentAccessNotice";
@@ -61,6 +63,10 @@ const CourseDetailRight = ({
   const hasCompleteAccess = isAuthenticated && isProfileComplete;
   const [conflictState, setConflictState] =
     useState<EnrollmentConflictState | null>(null);
+  const [isEnrollmentConfirmedOpen, setIsEnrollmentConfirmedOpen] =
+    useState(false);
+  const [isCourseCompletedModalOpen, setIsCourseCompletedModalOpen] =
+    useState(false);
   const [isRatingCardVisible, setIsRatingCardVisible] = useState(false);
   const completeEnrollmentMutation = useCompleteEnrollment();
   const createCourseReviewMutation = useCreateCourseReview();
@@ -125,6 +131,8 @@ const CourseDetailRight = ({
     createEnrollmentMutation.mutate(payload, {
       onSuccess: () => {
         setConflictState(null);
+        setIsCourseCompletedModalOpen(false);
+        setIsEnrollmentConfirmedOpen(true);
       },
       onError: (error) => {
         if (!axios.isAxiosError<CreateEnrollmentConflictError>(error)) {
@@ -136,6 +144,8 @@ const CourseDetailRight = ({
         }
 
         const firstConflict = error.response.data?.conflicts?.[0];
+        setIsEnrollmentConfirmedOpen(false);
+        setIsCourseCompletedModalOpen(false);
         setConflictState({
           payload,
           message: error.response.data?.message ?? "Schedule conflict detected",
@@ -169,6 +179,11 @@ const CourseDetailRight = ({
 
     submitEnrollment({ ...conflictState.payload, force: true });
   };
+  const conflictModalHandlers = {
+    // Keep both handlers for upcoming conflict modal button wiring.
+    onCancel: handleConflictCancel,
+    onContinue: handleConflictContinue,
+  };
 
   const enrolledSchedule = matchedEnrollment?.schedule;
   const enrolledLocation =
@@ -194,7 +209,13 @@ const CourseDetailRight = ({
       return;
     }
 
-    completeEnrollmentMutation.mutate(enrollmentId);
+    completeEnrollmentMutation.mutate(enrollmentId, {
+      onSuccess: () => {
+        setConflictState(null);
+        setIsEnrollmentConfirmedOpen(false);
+        setIsCourseCompletedModalOpen(true);
+      },
+    });
   };
 
   const handleRetakeCourse = () => {
@@ -220,6 +241,13 @@ const CourseDetailRight = ({
       rating,
     });
   };
+  const isConflictModalOpen = conflictState != null;
+  const isEnrollmentConfirmedModalOpen =
+    isEnrollmentConfirmedOpen &&
+    !isConflictModalOpen &&
+    !isCourseCompletedModalOpen;
+  const isCourseCompletedFeedbackModalOpen =
+    isCourseCompletedModalOpen && !isConflictModalOpen;
 
   return (
     <div className="mt-[130px] w-[530px] flex flex-col gap-[32px]">
@@ -294,16 +322,18 @@ const CourseDetailRight = ({
           ) : null}
         </>
       )}
-      {conflictState ? (
-        <EnrollmentConflictModal
-          message={conflictState.message}
-          conflictingCourseName={conflictState.conflictingCourseName}
-          conflictingSchedule={conflictState.conflictingSchedule}
-          isSubmitting={createEnrollmentMutation.isPending}
-          onCancel={handleConflictCancel}
-          onContinue={handleConflictContinue}
-        />
-      ) : null}
+      <EnrollmentConflictModal
+        isOpen={isConflictModalOpen}
+        onClose={conflictModalHandlers.onCancel}
+      />
+      <EnrollmentConfirmedModal
+        isOpen={isEnrollmentConfirmedModalOpen}
+        onClose={() => setIsEnrollmentConfirmedOpen(false)}
+      />
+      <CourseCompletedModal
+        isOpen={isCourseCompletedFeedbackModalOpen}
+        onClose={() => setIsCourseCompletedModalOpen(false)}
+      />
     </div>
   );
 };
