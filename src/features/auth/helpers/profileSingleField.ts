@@ -1,7 +1,7 @@
 import { createElement, type ReactNode, type RefCallback } from "react";
-import PENCIL_SIMPLE_ICON from "../../../assets/icons/profile/Icon Set=PencilSimple.svg?react";
-import CHECK_ICON from "../../../assets/icons/profile/Icon Set=Check.svg?react";
-import ARROW_ICON from "../../../assets/icons/profile/arrow_down.svg?react";
+import PENCIL_SIMPLE_ICON from "../../../assets/icons/profile/form/Icon Set=PencilSimple.svg?react";
+import CHECK_ICON from "../../../assets/icons/profile/form/Icon Set=Check.svg?react";
+import ARROW_ICON from "../../../assets/icons/profile/form/arrow_down.svg?react";
 
 export type TrailingIconType = "pencil" | "check" | "arrow";
 

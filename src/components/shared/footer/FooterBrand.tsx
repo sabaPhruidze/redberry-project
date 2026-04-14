@@ -1,4 +1,4 @@
-import LOGO from "../../assets/icons/header/Logo.svg";
+import LOGO from "../../../assets/icons/header/Logo.svg";
 import { SOCIAL_MEDIA } from "./footer.data";
 
 const FooterBrand = () => {

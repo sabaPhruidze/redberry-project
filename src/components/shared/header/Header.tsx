@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import LOGO from "../../assets/icons/header/Logo.svg";
-import { useAuthModal } from "../../features/auth/hooks/useAuthModal";
+import LOGO from "../../../assets/icons/header/Logo.svg";
+import { useAuthModal } from "../../../features/auth/hooks/useAuthModal";
 import {
   getAuthUser,
   getIsProfileCompleteFromUser,
-} from "../../features/profile/helpers/authUser";
+} from "../../../features/profile/helpers/authUser";
 import HeaderAuthenticatedActions from "./HeaderAuthenticatedActions";
 import HeaderGuestActions from "./HeaderGuestActions";
 

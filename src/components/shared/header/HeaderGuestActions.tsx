@@ -1,6 +1,6 @@
-import STAR3 from "../../assets/icons/header/three_star.svg?react";
-import Button from "../ui/Button";
-import OutlineButton from "../ui/OutlineButton";
+import STAR3 from "../../../assets/icons/header/three_star.svg?react";
+import Button from "../../ui/Button";
+import OutlineButton from "../../ui/OutlineButton";
 import { Link, useLocation } from "react-router-dom";
 
 type HeaderGuestActionsProps = {

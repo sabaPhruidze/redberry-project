@@ -1,4 +1,4 @@
-import USER_ICON from "../../../../../assets/icons/profile/user.svg";
+import USER_ICON from "../../../../../assets/icons/profile/avatar/user.svg";
 
 type ProfileClosePromptProps = {
   onStay: () => void;

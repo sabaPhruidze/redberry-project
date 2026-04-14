@@ -1,11 +1,11 @@
-import FB from "../../assets/icons/footer/social_media/Facebook.svg";
-import TWITTER from "../../assets/icons/footer/social_media/Twitter.svg";
-import INSTAGRAM from "../../assets/icons/footer/social_media/Instagram.svg";
-import LINKEDIN from "../../assets/icons/footer/social_media/LinkedIn.svg";
-import YOUTUBE from "../../assets/icons/footer/social_media/YouTube.svg";
-import EMAIL from "../../assets/icons/footer/contact/email.svg";
-import LOCATION from "../../assets/icons/footer/contact/location.svg";
-import PHONE from "../../assets/icons/footer/contact/phone.svg";
+import FB from "../../../assets/icons/footer/social_media/Facebook.svg";
+import TWITTER from "../../../assets/icons/footer/social_media/Twitter.svg";
+import INSTAGRAM from "../../../assets/icons/footer/social_media/Instagram.svg";
+import LINKEDIN from "../../../assets/icons/footer/social_media/LinkedIn.svg";
+import YOUTUBE from "../../../assets/icons/footer/social_media/YouTube.svg";
+import EMAIL from "../../../assets/icons/footer/contact/email.svg";
+import LOCATION from "../../../assets/icons/footer/contact/location.svg";
+import PHONE from "../../../assets/icons/footer/contact/phone.svg";
 
 export type FooterIconItem = {
   alt: string;

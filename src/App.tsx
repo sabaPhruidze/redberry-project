@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { AnimatePresence } from "framer-motion";
-import Loader from "./components/shared/Loader";
+import Loader from "./components/shared/feedback/Loader";
 import LoginModal from "./features/auth/components/login/LoginModal";
 import RegisterModal from "./features/auth/components/register/RegisterModal";
 import EnrolledCoursesModal from "./features/auth/components/enrolled-courses/EnrolledCoursesModal";

@@ -189,3 +189,7 @@
 ## Tab
 
 1. renamed tab and added relevant logo as an icon
+
+## reviewing what has done and structuring
+
+1. sturcturized in a better way

@@ -1,4 +1,4 @@
-import CHECK_ICON from "../../../assets/icons/profile/Icon Set=Check.svg?react";
+import CHECK_ICON from "../../../assets/icons/profile/form/Icon Set=Check.svg?react";
 
 type ProfileCompletionIndicatorProps = {
   isComplete: boolean;

@@ -1,4 +1,4 @@
-import BOX_ICON from "../../../../assets/icons/box.svg";
+import BOX_ICON from "../../../../assets/icons/placeholders/box.svg";
 
 // Empty state for enrolled courses sidebar while list UI is not rendered yet.
 type EnrolledCoursesEmptyStateProps = {

@@ -1,4 +1,4 @@
-import { useProtectedAction } from "../../features/auth/hooks/useProtectedAction";
+import { useProtectedAction } from "../../../features/auth/hooks/useProtectedAction";
 import FooterBottomBar from "./FooterBottomBar";
 import FooterBrand from "./FooterBrand";
 import FooterLinksColumns from "./FooterLinksColumns";
