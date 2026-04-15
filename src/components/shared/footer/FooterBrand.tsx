@@ -1,11 +1,13 @@
 import LOGO from "../../../assets/icons/header/Logo.svg";
 import { SOCIAL_MEDIA } from "./footer.data";
-
+import { Link } from "react-router-dom";
 const FooterBrand = () => {
   return (
     <div>
       <div className="w-[174px] h-[45px] flex flex-row gap-[12px] items-center">
-        <img src={LOGO} alt="logo" className="w-[45px] h-[45px]" />
+        <Link to="/">
+          <img alt="logo" src={LOGO} className="w-[45px] h-[45px]" />
+        </Link>
         <h2 className="text-[#130E67] font-[500] text-[24px] leading-[100%]">
           Bootcamp
         </h2>
