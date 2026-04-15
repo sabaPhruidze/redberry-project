@@ -24,8 +24,8 @@ const ContinueLearningSection = ({
       <h2 className="h-[48px] text-[40px] font-[600] leading-[100%] text-redberry-text-black">
         Continue Learning
       </h2>
-      <div className="flex h-[22px] flex-row justify-between">
-        <p className="mb-[32px] mt-[6px] h-full text-[18px] font-[500] leading-[100%] text-redberry-text-gray-medium">
+      <div className="mt-[6px] flex h-[22px] flex-row justify-between">
+        <p className=" h-full text-[18px] font-[500] leading-[100%] text-redberry-text-gray-medium">
           Pick up where you left
         </p>
         {showSeeAll ? (
