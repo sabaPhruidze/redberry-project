@@ -17,8 +17,12 @@ export type UseCourseDetailRightEnrollmentParams = {
 
 export type UseCourseDetailRightEnrollmentFlowParams = {
   courseId: number;
-  selectedCourseScheduleId?: number;
-  isEnrollActionActive: boolean;
+  selectedCourseScheduleId: number | null;
+  isScheduleSelectionComplete: boolean;
+  isAuthenticated: boolean;
+  isProfileComplete: boolean;
+  openLoginModal: () => void;
+  openProfileModal: () => void;
   uiState: CourseDetailRightUiState;
   dispatchUiAction: CourseDetailRightUiDispatch;
 };

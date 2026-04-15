@@ -15,7 +15,6 @@ const useCreateEnrollment = () => {
   return useMutation({
     mutationFn: (payload: CreateEnrollmentRequest) => createEnrollment(payload),
     onSuccess: async (response) => {
-      console.log("POST /enrollments success:", response);
       await queryClient.invalidateQueries({
         queryKey: enrollmentsQueryKey,
       });

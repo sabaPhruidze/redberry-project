@@ -38,41 +38,45 @@ const TotalPrice = ({
   actionText = "Enroll Now",
 }: TotalPriceProps) => {
   return (
-    <div className="w-[530px] h-[306px] p-[40px] border border-[#F5F5F5] rounded-[12px] bg-white">
-      <div className="w-full h-[39px] flex flex-row justify-between items-center">
-        <p className="font-[600] text-[20px] leading-[24px] text-[#8A8A8A] ">
+    <div className="h-[306px] w-[530px] rounded-[12px] border border-[#F5F5F5] bg-white p-[40px]">
+      <div className="flex h-[39px] w-full flex-row items-center justify-between">
+        <p className="text-[20px] font-[600] leading-[24px] text-[#8A8A8A]">
           Total Price
         </p>
-        <p className="text-[#292929] text-[32px] font-[600] leading-[100%]">
+
+        <p className="text-[32px] font-[600] leading-[100%] text-[#292929]">
           {formatPrice(totalPrice)}
         </p>
       </div>
-      <div className="w-[446px] h-[60px] flex flex-col gap-[12px] mt-[32px]">
-        <div className="w-full h-[39px] flex flex-row justify-between items-center">
-          <p className="font-[500] leading-[24px] text-[#8A8A8A] ">
-            Base Price
-          </p>
-          <p className="text-[#292929] font-[500] leading-[24px]">
+
+      <div className="mt-[32px] flex h-[60px] w-[446px] flex-col gap-[12px]">
+        <div className="flex h-[39px] w-full flex-row items-center justify-between">
+          <p className="font-[500] leading-[24px] text-[#8A8A8A]">Base Price</p>
+
+          <p className="font-[500] leading-[24px] text-[#292929]">
             {`+ ${formatPrice(basePrice)}`}
           </p>
         </div>
-        <div className="w-full h-[39px] flex flex-row justify-between items-center">
-          <p className="font-[500] leading-[24px] text-[#8A8A8A] ">
+
+        <div className="flex h-[39px] w-full flex-row items-center justify-between">
+          <p className="font-[500] leading-[24px] text-[#8A8A8A]">
             Session Type
           </p>
-          <p className="text-[#292929] font-[500] leading-[24px]">
+
+          <p className="font-[500] leading-[24px] text-[#292929]">
             {formatModifier(sessionTypeModifier)}
           </p>
         </div>
       </div>
+
       <button
         type="button"
         disabled={!isEnrollButtonActive || isEnrollPending}
         onClick={onEnroll}
-        className={`mt-[32px] w-full h-[63px] rounded-[12px] text-[20px] font-[600] text-center leading-[24px] ${
+        className={`mt-[32px] h-[63px] w-full rounded-[12px] text-center text-[20px] font-[600] leading-[24px] ${
           isEnrollButtonActive && !isEnrollPending
-            ? "bg-[#281ED2] text-[#FFFFFF]"
-            : "bg-[#EEEDFC] text-[#B7B3F4]"
+            ? "bg-[#281ED2] text-[#FFFFFF] cursor-pointer"
+            : "bg-[#EEEDFC] text-[#B7B3F4] cursor-not-allowed"
         }`}
       >
         {actionText}

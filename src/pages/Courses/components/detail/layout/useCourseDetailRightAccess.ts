@@ -8,10 +8,16 @@ import type { NoticeVariant } from "../../../../../types/courseDetailRight";
 
 export const useCourseDetailRightAccess = () => {
   const { openLoginModal, openProfileModal } = useAuthModal();
-  const authUser = getAuthUser();
+
   const isAuthenticated = isAuthenticatedClient();
-  const isProfileComplete = getIsProfileCompleteFromUser(authUser);
+  const authUser = getAuthUser();
+
+  const isProfileComplete = isAuthenticated
+    ? getIsProfileCompleteFromUser(authUser)
+    : false;
+
   const hasCompleteAccess = isAuthenticated && isProfileComplete;
+
   const noticeVariant: NoticeVariant = !isAuthenticated
     ? "auth"
     : !isProfileComplete
@@ -19,10 +25,11 @@ export const useCourseDetailRightAccess = () => {
       : null;
 
   return {
+    isAuthenticated,
+    isProfileComplete,
     hasCompleteAccess,
     noticeVariant,
     openLoginModal,
     openProfileModal,
-    isAuthenticated,
   };
 };
