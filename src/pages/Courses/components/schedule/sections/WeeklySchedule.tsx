@@ -26,7 +26,7 @@ const WeeklySchedule = ({
       <button
         type="button"
         onClick={onToggle}
-        className="w-full h-[30px] flex flex-row justify-between items-center cursor-pointer"
+        className="w-full h-[30px] flex flex-row justify-between items-center cursor-pointer "
       >
         <ONE
           aria-hidden

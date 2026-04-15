@@ -12,7 +12,7 @@ const BreadcrumbCatalog = () => {
       <img
         src={RIGHT_ARROW}
         alt="right arrow"
-        className="w-[12px] h-[24px] ml-[4px] mr-[6px]"
+        className="w-[12px] h-[24px] ml-[4px] mr-[6px] mt-[2px]"
       />
       <p className="font-[500] text-[18px] leading-[100%] text-[#736BEA]">
         Browse
